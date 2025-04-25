@@ -1,14 +1,18 @@
 root: index.md
 subtrees:
-  - caption: Tutorial
+  - caption: "Getting Started with AMD Instinct"
     entries:
-    - file: tutorial/sample.md
-  - caption: How to
-    entries:
-    - file: how-to/sample.md
-  - caption: Conceptual
-    entries:
-    - file: conceptual/sample.rst
-  - caption: Reference
-    entries:
-    - file: reference/sample.md    
+      - file: journeys/bare-metal/index.md
+        title: Bare Metal
+        subtrees:
+            - entries:
+              - file: journeys/bare-metal/hardware-selection.md
+              - file: journeys/bare-metal/installation.md
+              - file: journeys/bare-metal/validation.md
+      - file: journeys/cloud/index.md
+        title: Cloud
+        subtrees:
+          - entries:
+            - file: journeys/cloud/provider-selection.md
+            - file: journeys/cloud/provisioning.md
+            - file: journeys/cloud/environment-setup.md

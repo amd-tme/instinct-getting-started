@@ -1,28 +1,56 @@
 ---
-myst:
-  html_meta:
-    "description": "Learn about the features, capabilities, and ways to optimize the AMD GPU drivers"
-    "keywords": "Instinct, GPU, how to, conceptual, PCIe, IOMMU"
+MyST:
+  HTML_meta:
+    "description": "Getting Started with AMD Instinct GPUs"
+    "keywords": "Instinct, GPU, how to, conceptual, getting started"
 ---
 
-# ProjectName
+# Getting Started with AMD Instinct GPUs
 
-ProjectName documentation is available here.
+Choose your starting point:
 
-## Diataxis based documentation
+::::{grid} 1 1 2 2
+:gutter: 3
 
-[Diataxis](https://diataxis.fr/) is a useful framework to write effective
-documentation. It is used throughout Instinct and ROCm documentation.
+:::{grid-item-card} Bare Metal Deployment
+:link: journeys/bare-metal/index
+:link-type: doc
+:class-card: journey-card
 
-AMD has a [course](https://performancemanager4.successfactors.com/sf/learning?destUrl=https%3a%2f%2famd%2eplateau%2ecom%2flearning%2fuser%2fdeeplink%5fredirect%2ejsp%3flinkId%3dITEM%5fDETAILS%26componentID%3dTECH%5fDDTAP%5fWBT%26componentTypeID%3dCOURSE%26revisionDate%3d1725291420000%26fromSF%3dY&company=AMD)
-on Diataxis to help you write better documentation.
+```{image} _static/images/bare_metal.png
+:align: center
+:width: 25%
+```
 
-## Pitchfork directory structure
+^^^
+Deploy AMD Instinct GPUs in your data center or on-premises environment for maximum performance and control.
 
-Please use [Pitchfork](https://www.reddit.com/r/cpp/comments/996q8o/prepare_thy_pitchforks_a_de_facto_standard/)
-guidelines for the directory structure for this project.
+**Ideal for:**
 
-## File formats
+* Enterprise AI infrastructure
+* High-performance computing clusters
+* Production inference environments
+* Specialized research computing
+:::
 
-The team working on this repository may choose to use either rst or myst
-markdown. This is a team style choice and you will be supported regardless.
+:::{grid-item-card} Cloud Deployment
+:link: journeys/cloud/index
+:link-type: doc
+:class-card: journey-card
+
+```{image} _static/images/cloud.png
+:align: center
+:width: 25%
+```
+
+^^^
+Deploy AMD Instinct GPUs in cloud environments for flexibility, scalability, and reduced infrastructure management.
+
+**Ideal for:**
+
+* Rapid prototyping and experimentation
+* Variable workload demands
+* Distributed teams and collaborative projects
+* Hybrid cloud/on-premises environments
+:::
+::::

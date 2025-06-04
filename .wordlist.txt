@@ -5,12 +5,14 @@ ACEs
 ACS
 AccVGPR
 AccVGPRs
+AKS
 ALU
 AMD
 AMDGPU
 AMDGPUs
 AMDMIGraphX
 AMI
+Ansible
 AOCC
 AOMP
 AOTriton
@@ -18,6 +20,7 @@ APBDIS
 APIC
 APIs
 APU
+Arkon
 ASIC
 ASICs
 ASan
@@ -40,8 +43,10 @@ CCD
 CDNA
 CHTML
 CIFAR
+Cirrascale
 CLI
 CLion
+CloudWatch
 CMake
 CMakeLists
 CMakePackage
@@ -51,6 +56,7 @@ CPF
 CPP
 CPU
 CPUs
+CX
 Cron
 CSC
 CSE
@@ -94,6 +100,7 @@ DataParallel
 Debian
 DeepSpeed
 Dependabot
+declaratively
 Deprecations
 DevCap
 Dockerfile
@@ -118,6 +125,7 @@ Flang
 Fortran
 Fuyu
 GALB
+Gb
 GCC
 GCD
 GCDs
@@ -138,6 +146,8 @@ GMI
 GPG
 GPR
 GPT
+GPUP
+GST
 GPU
 GPU's
 GPUs
@@ -170,6 +180,8 @@ ICD
 ICV
 IDE
 IDEs
+IaaS
+IaC
 IFWI
 IMDb
 IOMMU
@@ -189,6 +201,7 @@ Interop
 Intersphinx
 Intra
 Ioffe
+interruptible
 JAX's
 Jinja
 JSON
@@ -199,12 +212,14 @@ KMD
 KV
 KVM
 Karpathy's
-KiB
 Keras
 Khronos
+KiB
+Kubernetes
 LAPACK
 LCLK
 LDS
+LINS
 LLM
 LLMs
 LLVM
@@ -223,6 +238,7 @@ MIOpenGEMM
 MIOpen's
 MIVisionX
 MLM
+MLPerf
 MMA
 MMIO
 MMIOH
@@ -263,14 +279,19 @@ NUMA
 NVCC
 NVIDIA
 NVPTX
+NVMe
+NVv
 NaN
 Nano
 Navi
 Noncoherently
 NousResearch's
+Nscale
+Nscale's
 NumPy
 OAM
 OAMs
+OCI
 OCP
 OEM
 OFED
@@ -282,6 +303,7 @@ OMPX
 ONNX
 OSS
 OSU
+Omniperf
 OpenCL
 OpenCV
 OpenFabrics
@@ -289,14 +311,18 @@ OpenGL
 OpenMP
 OpenMPI
 OpenSSL
+OpenShift
 OpenVX
 OpenXLA
 Oversubscription
+PaaS
 PagedAttention
 Pallas
+PBQT
 PCC
 PCI
 PCIe
+PEBB
 PEFT
 PEQT
 PIL
@@ -311,6 +337,7 @@ PerfDb
 Perfetto
 PipelineParallel
 PnP
+Podman
 PowerEdge
 PowerShell
 Profiler's
@@ -324,6 +351,7 @@ RAS
 RCCL
 RDC
 RDC's
+RDP
 RDMA
 RDNA
 README
@@ -355,6 +383,7 @@ Rickle
 RoCE
 Runfile
 Ryzen
+SaaS
 SALU
 SBIOS
 SCA
@@ -373,6 +402,7 @@ SIMDs
 SKU
 SKUs
 SLES
+Slurm
 SMEM
 SMI
 SMT
@@ -389,14 +419,19 @@ Skylake
 Softmax
 Spack
 SplitK
+Supercluster
 Supermicro
 Szegedy
+TNMR
 TCA
 TCC
 TCI
 TCIU
 TCP
 TCR
+TensorWave
+TensorWave's
+Terraform
 TF
 TFLOPS
 TP
@@ -427,6 +462,7 @@ UC
 UCC
 UCX
 UE
+UEFI
 UIF
 UMC
 USM
@@ -442,11 +478,15 @@ VGPRs
 VM
 VMEM
 VMWare
+VMs
+VPC
 VRAM
 VSIX
 VSkipped
 Vanhoucke
 Vulkan
+Vultr
+vLLM
 WGP
 WGPs
 WX
@@ -454,6 +494,7 @@ WikiText
 Wojna
 Workgroups
 Writebacks
+watsonx
 XCD
 XCDs
 XGBoost
@@ -620,6 +661,7 @@ hsa
 hsakmt
 hyperparameter
 hyperparameters
+hyperscalers
 iDRAC
 ib_core
 inband
@@ -696,6 +738,7 @@ prebuilt
 precompiled
 preconditioner
 preconfigured
+precisions
 preemptible
 prefetch
 prefetchable
@@ -729,6 +772,7 @@ reformats
 repo
 repos
 representativeness
+reproducibility
 req
 resampling
 rescaling
@@ -760,6 +804,7 @@ rocminfo
 rocprim
 rocprof
 rocprofiler
+rocprofv
 rocr
 rocrand
 rocsolver
@@ -794,6 +839,7 @@ subfolder
 subfolders
 submodule
 submodules
+supercluster
 supercomputing
 symlink
 symlinks
@@ -815,6 +861,7 @@ tqdm
 tracebacks
 txt
 uarch
+ultrafast
 uncached
 uncorrectable
 underoptimized

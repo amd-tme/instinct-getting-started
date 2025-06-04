@@ -1,6 +1,48 @@
-# ProjectName
+# AMD Instinct Getting Started Guide
 
-Describe your wonderful new project consisely.
+This documentation provides step-by-step guidance for getting started with AMD Instinct accelerators. Whether you're deploying on bare metal hardware or in the cloud, our journey-based approach will help you:
+
+- Select the right AMD Instinct GPU for your workload
+- Install and configure the ROCm software stack
+- Set up your development environment
+- Validate your installation and optimize performance
+
+## Quick Start
+
+Choose your deployment path:
+
+- **[Bare Metal Journey](docs/journeys/bare-metal/)** - Deploy directly on your hardware for maximum performance and control
+- **[Cloud Journey](docs/journeys/cloud/)** - Deploy in cloud environments for flexibility and scalability
+
+## What You'll Learn
+
+### Bare Metal Deployment
+- Hardware selection and system requirements
+- ROCm installation and configuration
+- Environment setup and multi-GPU configuration
+- Performance validation and optimization techniques
+
+### Cloud Deployment
+- Cloud provider selection and comparison
+- Instance provisioning and configuration
+- Environment setup in cloud environments
+- Integration with cloud-native services
+
+## Prerequisites
+
+- Basic familiarity with Linux command line
+- Understanding of GPU computing concepts
+- Administrative access to target deployment environment
+
+## Getting Help
+
+- **Documentation**: Full documentation is available at [your-docs-site-url]
+- **Community**: Join the ROCm community for support and discussions
+- **Issues**: Report documentation issues via GitHub Issues
+
+## Contributing
+
+We welcome contributions to improve this documentation. Please see our contributing guidelines for more information.
 
 ## Documentation Build Guide
 

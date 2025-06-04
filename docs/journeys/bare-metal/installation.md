@@ -1,4 +1,4 @@
-# Installation and Setup for AMD Instinct GPUs
+# Installation
 
 :::{card}
 :class-card: journey-progress

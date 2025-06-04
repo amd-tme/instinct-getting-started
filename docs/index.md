@@ -1,8 +1,8 @@
 ---
-myst:
-  html_meta:
+MyST:
+  HTML_meta:
     "description": "Getting Started with AMD Instinct GPUs"
-    "keywords": "Instinct, GPU, how to, conceptual, gettings started"
+    "keywords": "Instinct, GPU, how to, conceptual, getting started"
 ---
 
 # Getting Started with AMD Instinct GPUs

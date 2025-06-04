@@ -1,4 +1,4 @@
-# Hardware Selection Guide for AMD Instinct GPUs
+# Hardware Selection
 
 :::{card}
 :class-card: journey-progress

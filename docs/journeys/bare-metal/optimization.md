@@ -1,8 +1,8 @@
-# Performance Optimization for AMD Instinct GPUs
+# Optimization
 
 :::{card}
 :class-card: journey-progress
-[Hardware Selection](hardware-selection.md) → [Installation](installation.md) → [Validation](validation.md) → **[Optimization](optimization.md)**
+[Hardware Selection](hardware-selection.md) → [Installation](installation.md) → [Environment Setup](environment-setup.md) → [Validation](validation.md) → **[Optimization](optimization.md)**
 :::
 
 This guide provides a high-level overview of optimization approaches for AMD Instinct accelerators in a single-node environment. For detailed, step-by-step instructions, refer to the linked official documentation.
@@ -158,7 +158,7 @@ After implementing optimizations, verify the results:
    - Measure key metrics improvement
 
 3. **Performance Monitoring**
-   - Use rocm-smi or amd-smi for real-time monitoring
+   - Use rocm-smi or AMD-smi for real-time monitoring
    - Track thermal and power characteristics
    - Monitor memory usage patterns
 

@@ -25,7 +25,7 @@ Let's begin your journey with [Hardware Selection](hardware-selection/).
 
 ## Your Journey Path
 
-![Bare Metal Journey Path](_static/images/bare_metal.png)
+![Bare Metal Journey Path](../../_static/images/bare_metal.svg)
 
 ### [1. Hardware Selection](hardware-selection/)
 

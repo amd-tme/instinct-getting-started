@@ -20,7 +20,7 @@ html_theme_options = {
     "flavor": "instinct",
     "link_main_doc": True,
 }
-extensions = ["rocm_docs"]
+extensions = ["rocm_docs", "sphinx.ext.imgconverter"]
 
 # Table of contents
 external_toc_path = "./sphinx/_toc.yml"

@@ -1,6 +1,6 @@
 # Open Source Ecosystem
 
-*Last reviewed: 2026-03-31*
+Last reviewed: 2026-03-31
 
 These components are developed by the open source community with AMD
 contributing optimizations, CI/CD validation, and upstream support. They run on

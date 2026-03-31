@@ -1,6 +1,6 @@
 # Third-Party Infrastructure
 
-*Last reviewed: 2026-03-31*
+Last reviewed: 2026-03-31
 
 Standard infrastructure tools that integrate with the AMD stack but are not
 AMD-specific. Customers typically select these based on their existing

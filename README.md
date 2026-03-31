@@ -17,12 +17,14 @@ Choose your deployment path:
 ## What You'll Learn
 
 ### Bare Metal Deployment
+
 - Hardware selection and system requirements
 - ROCm installation and configuration
 - Environment setup and multi-GPU configuration
 - Performance validation and optimization techniques
 
 ### Cloud Deployment
+
 - Cloud provider selection and comparison
 - Instance provisioning and configuration
 - Environment setup in cloud environments

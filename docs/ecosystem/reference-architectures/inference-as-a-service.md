@@ -1,6 +1,6 @@
 # Inference as a Service
 
-*Last reviewed: 2026-03-31*
+Last reviewed: 2026-03-31
 
 This reference architecture shows how the ecosystem building blocks compose for
 a customer building an inference-as-a-service business — for example, LLM API
@@ -8,25 +8,7 @@ endpoints powered by AMD Instinct GPUs.
 
 ## Architecture overview
 
-```text
-Customer Applications / API Clients
-         |
-    Load Balancer / API Gateway                    [3rd Party]
-         |
-    vLLM or SGLang (inference engine)              [Open Source]
-    — or AMD Inference Microservices (AIM)          [AMD]
-         |
-    PyTorch + Hugging Face models                  [Open Source]
-         |
-    ROCm Core SDK (HIP, MIOpen, hipBLAS, RCCL)    [AMD]
-         |
-    AMD GPU Driver + GPU Operator                  [AMD]
-         |
-    AMD Instinct GPUs (MI300X / MI325X / MI350X)   [AMD Hardware]
-         |
-    Kubernetes + Prometheus/Grafana                [3rd Party]
-    — or AMD Enterprise AI Suite                   [AMD]
-```
+![Inference as a Service architecture diagram](../../_static/images/amd_token-aas.png)
 
 ## Two deployment paths
 

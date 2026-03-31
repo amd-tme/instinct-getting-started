@@ -17,7 +17,7 @@ Choose your starting point:
 :link-type: doc
 :class-card: journey-card
 
-```{image} _static/images/bare_metal.png
+```{image} _static/images/bare_metal.svg
 :align: center
 :width: 25%
 ```
@@ -38,7 +38,7 @@ Deploy AMD Instinct GPUs in your data center or on-premises environment for maxi
 :link-type: doc
 :class-card: journey-card
 
-```{image} _static/images/cloud.png
+```{image} _static/images/cloud.svg
 :align: center
 :width: 25%
 ```

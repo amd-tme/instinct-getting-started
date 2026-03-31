@@ -11,6 +11,7 @@ We've designed two comprehensive journeys to help you get started with AMD Insti
 Deploy AMD Instinct GPUs directly on your hardware infrastructure for maximum performance and control.
 
 **Best for:**
+
 - Enterprise AI infrastructure
 - High-performance computing clusters
 - Production inference environments
@@ -18,6 +19,7 @@ Deploy AMD Instinct GPUs directly on your hardware infrastructure for maximum pe
 - Maximum performance requirements
 
 **What you'll learn:**
+
 - Hardware selection and compatibility
 - ROCm installation and system configuration
 - Environment optimization
@@ -28,6 +30,7 @@ Deploy AMD Instinct GPUs directly on your hardware infrastructure for maximum pe
 Deploy AMD Instinct GPUs in cloud environments for flexibility, scalability, and reduced infrastructure management.
 
 **Best for:**
+
 - Rapid prototyping and experimentation
 - Variable workload demands
 - Distributed teams and collaboration
@@ -35,6 +38,7 @@ Deploy AMD Instinct GPUs in cloud environments for flexibility, scalability, and
 - Minimal infrastructure management
 
 **What you'll learn:**
+
 - Cloud provider selection and comparison
 - Instance provisioning and configuration
 - Cloud-optimized environment setup

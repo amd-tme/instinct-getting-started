@@ -1,6 +1,6 @@
 # AMD Components
 
-*Last reviewed: 2026-03-31*
+Last reviewed: 2026-03-31
 
 These components are developed, maintained, and supported by AMD. They form the
 foundation of every AMD Instinct deployment.

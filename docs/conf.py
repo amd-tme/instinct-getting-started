@@ -27,5 +27,5 @@ external_toc_path = "./sphinx/_toc.yml"
 
 exclude_patterns = [".venv"]
 
-html_static_path = ['_static']
-html_css_files = ['css/journey.css']
+html_static_path = ["_static"]
+html_css_files = ["css/journey.css"]

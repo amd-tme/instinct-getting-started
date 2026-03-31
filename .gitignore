@@ -8,6 +8,9 @@ build
 _build/
 _images/
 _static/
+!docs/_static/
+!docs/_static/images/
+!docs/_static/images/**
 _templates/
 _toc.yml
 docBin/

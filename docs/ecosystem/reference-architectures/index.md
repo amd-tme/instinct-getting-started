@@ -1,6 +1,6 @@
 # Reference Architectures
 
-*Last reviewed: 2026-03-31*
+Last reviewed: 2026-03-31
 
 Reference architectures show how the [AMD components](../amd-components.md),
 [open source ecosystem](../open-source-ecosystem.md), and

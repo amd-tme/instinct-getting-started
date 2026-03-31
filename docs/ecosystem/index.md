@@ -1,6 +1,6 @@
 # Software Ecosystem Overview
 
-*Last reviewed: 2026-03-31*
+Last reviewed: 2026-03-31
 
 The AMD Instinct platform provides a full-stack, open software ecosystem for
 building and deploying AI, ML, and HPC workloads. This section maps the key
@@ -47,19 +47,7 @@ Every deployment uses the same foundation: **AMD Instinct GPUs** +
 **AMD GPU drivers** + **ROCm Core SDK**. On top of that foundation, you choose
 frameworks, tools, and infrastructure based on your use case.
 
-```text
-  Applications & Workloads
-         |
-  AI Frameworks & Inference Engines        [Open Source]
-         |
-  ROCm Core SDK (HIP, libraries, tools)   [AMD]
-         |
-  GPU Drivers + Infrastructure             [AMD]
-         |
-  AMD Instinct GPUs                        [AMD Hardware]
-         |
-  Orchestration & Monitoring               [Third Party / Open Source]
-```
+![AMD software ecosystem diagram](../_static/images/software-ecosystem.png)
 
 See [Reference Architectures](reference-architectures/index.md) for worked
 examples showing how these layers compose for specific use cases.

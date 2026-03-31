@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Guidelines
 
 ### Types of Changes
+
 - **Added** for new features
 - **Changed** for changes in existing functionality
 - **Deprecated** for soon-to-be removed features
@@ -16,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Security** for vulnerability fixes
 
 ### Contributing to the Changelog
+
 - Keep an "Unreleased" section at the top for upcoming changes
 - Add new entries under the appropriate type of change
 - Include links to issues/PRs when applicable
@@ -27,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Comprehensive cloud provider support in table of contents with dedicated subsections
 - Cloud service responsibility model documentation explaining customer vs provider responsibilities
 - AMD Docker Toolkit integration for simplified container deployment
@@ -39,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - System-level optimization guidance including BIOS, NUMA, and power management configuration
 
 ### Changed
+
 - Updated all examples to use `amd-smi` as the primary SMI and ROCm validation tool
 - Improved document flow and readability by expanding bullet points into explanatory paragraphs
 - Enhanced environment setup guide with better transitions between sections
@@ -48,6 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated bare metal journey progression flow in all related documentation files
 
 ### Fixed
+
 - Corrected misspelling in tensorwave documentation filename (reaadme.md → readme.md)
 - Added missing hotaisle cloud provider documentation and table of contents entry
 
@@ -56,6 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-06-03
 
 ### Added
+
 - Initial release of AMD Instinct Getting Started documentation
 - Cloud provider journey documentation
 - Bare metal journey documentation
@@ -63,6 +69,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Table of contents structure for organized navigation
 
 ### Documentation Structure
+
 - Cloud journey: provider selection, provisioning, environment setup
 - Bare metal journey: hardware selection, installation, validation, optimization
 - Provider-specific guides for major cloud platforms
@@ -71,6 +78,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 ## Links
+
 - [Documentation Site](./docs/)
 - [Cloud Journey](./docs/journeys/cloud/)
 - [Bare Metal Journey](./docs/journeys/bare-metal/)

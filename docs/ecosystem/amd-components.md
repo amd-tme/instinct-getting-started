@@ -133,6 +133,6 @@ management, orchestration, and serving layers above ROCm.
 | [AMD AI Workbench](https://enterprise-ai.docs.amd.com/en/workbench/overview.html) | Development environment for fine-tuning, evaluation, and experimentation |
 | [AMD Inference Microservices (AIM)](https://enterprise-ai.docs.amd.com/en/workbench/inference/overview.html) | Pre-packaged, optimized inference containers for serving LLMs on Instinct GPUs |
 | **AI-Native Workload Orchestration** | Intelligent job scheduling and dynamic resource allocation |
-| **Solution Blueprints** | Pre-validated deployment patterns and reference architectures |
+| **Solution Blueprints** | Pre-validated deployment patterns and example architectures |
 
 [Enterprise AI Suite documentation](https://enterprise-ai.docs.amd.com/en/latest/platform-overview.html)

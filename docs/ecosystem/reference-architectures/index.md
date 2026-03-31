@@ -1,13 +1,13 @@
-# Reference Architectures
+# Example Architectures
 
 Last reviewed: 2026-03-31
 
-Reference architectures show how the [AMD components](../amd-components.md),
+Example architectures show how the [AMD components](../amd-components.md),
 [open source ecosystem](../open-source-ecosystem.md), and
 [third-party infrastructure](../third-party-infrastructure.md) compose into
 end-to-end solutions for specific use cases.
 
-## Available reference architectures
+## Available example architectures
 
 ::::{grid} 1 1 2 2
 :gutter: 3

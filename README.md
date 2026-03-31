@@ -22,7 +22,7 @@ Choose your deployment path:
 - AMD components: ROCm Core SDK, GPU drivers, and Enterprise AI Suite
 - Open source AI frameworks, inference engines, and training tools
 - Third-party infrastructure (orchestration, monitoring, storage)
-- [Reference architectures](docs/ecosystem/reference-architectures/) showing how the stack composes for real use cases
+- [Example architectures](docs/ecosystem/reference-architectures/) showing how the stack composes for real use cases
 
 ### Bare Metal Deployment
 

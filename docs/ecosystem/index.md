@@ -49,7 +49,7 @@ frameworks, tools, and infrastructure based on your use case.
 
 ![AMD software ecosystem diagram](../_static/images/software-ecosystem.png)
 
-See [Reference Architectures](reference-architectures/index.md) for worked
+See [Example Architectures](reference-architectures/index.md) for worked
 examples showing how these layers compose for specific use cases.
 
 ## Documentation resources

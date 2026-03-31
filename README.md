@@ -13,8 +13,16 @@ Choose your deployment path:
 
 - **[Bare Metal Journey](docs/journeys/bare-metal/)** - Deploy directly on your hardware for maximum performance and control
 - **[Cloud Journey](docs/journeys/cloud/)** - Deploy in cloud environments for flexibility and scalability
+- **[Software Ecosystem](docs/ecosystem/)** - Understand the full AMD Instinct software stack and how the pieces fit together
 
 ## What You'll Learn
+
+### Software Ecosystem
+
+- AMD components: ROCm Core SDK, GPU drivers, and Enterprise AI Suite
+- Open source AI frameworks, inference engines, and training tools
+- Third-party infrastructure (orchestration, monitoring, storage)
+- [Reference architectures](docs/ecosystem/reference-architectures/) showing how the stack composes for real use cases
 
 ### Bare Metal Deployment
 

@@ -9,7 +9,7 @@ MyST:
 
 Choose your starting point:
 
-::::{grid} 1 1 2 2
+::::{grid} 1 1 3 3
 :gutter: 3
 
 :::{grid-item-card} Bare Metal Deployment
@@ -31,6 +31,22 @@ Deploy AMD Instinct GPUs in your data center or on-premises environment for maxi
 * High-performance computing clusters
 * Production inference environments
 * Specialized research computing
+:::
+
+:::{grid-item-card} Software Ecosystem
+:link: ecosystem/index
+:link-type: doc
+:class-card: journey-card
+
+^^^
+Understand the full AMD Instinct software stack — ROCm, open source frameworks, third-party infrastructure, and how the pieces fit together.
+
+**Includes:**
+
+* AMD components and ROCm SDK
+* Open source AI frameworks
+* Reference architectures
+* Third-party infrastructure
 :::
 
 :::{grid-item-card} Cloud Deployment

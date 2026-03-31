@@ -17,7 +17,7 @@ foundation. The choice depends on your operational requirements.
 
 ### Self-managed open source path
 
-Full control, no AMD enterprise licensing.
+Full control over component selection; assemble your own stack from open source building blocks.
 
 | Layer | Components |
 |-------|------------|
@@ -27,25 +27,27 @@ Full control, no AMD enterprise licensing.
 | **Infrastructure** | [AMD GPU Operator](https://instinct.docs.amd.com/projects/gpu-operator/en/latest/) on Kubernetes |
 | **Monitoring** | [Prometheus](https://prometheus.io/) + [Grafana](https://grafana.com/) via [Device Metrics Exporter](https://instinct.docs.amd.com/projects/device-metrics-exporter/en/latest/) |
 
-### Enterprise-managed path
+### AMD Enterprise AI Suite path
 
-Adds resource management, workbench, pre-optimized AIM containers, and
-AI-native orchestration on top of the same ROCm + open source foundation.
+Also open source with no licensing requirements, the Enterprise AI Suite adds
+a well-designed web UI, enterprise authentication integration (SSO/IAM/RBAC),
+and pre-validated AI components — all built on the same Kubernetes foundation.
 
 | Layer | Components |
 |-------|------------|
-| **Inference engine** | [AMD Inference Microservices (AIM)](https://enterprise-ai.docs.amd.com/en/workbench/inference/overview.html) |
-| **Development** | [AMD AI Workbench](https://enterprise-ai.docs.amd.com/en/workbench/overview.html) |
-| **Resource management** | [AMD AI Resource Manager](https://enterprise-ai.docs.amd.com/en/resource-manager/overview.html) |
+| **Inference engine** | [AMD Inference Microservices (AIM)](https://enterprise-ai.docs.amd.com/en/latest/aims/overview.html) |
+| **Development** | [AMD AI Workbench](https://enterprise-ai.docs.amd.com/en/latest/workbench/overview.html) |
+| **Resource management** | [AMD Resource Manager](https://enterprise-ai.docs.amd.com/en/latest/resource-manager/overview.html) |
 | **GPU software** | [ROCm Core SDK](../amd-components.md#rocm-core-sdk) |
 | **Infrastructure** | [AMD GPU Operator](https://instinct.docs.amd.com/projects/gpu-operator/en/latest/) on Kubernetes |
 
 ## Key decision points
 
-- **Control vs. convenience:** The open source path gives full control over
-  every component; the enterprise path reduces operational burden with
-  pre-validated, optimized containers and built-in resource management.
-- **Licensing:** The open source path has no AMD enterprise licensing
-  requirements. The enterprise path requires an AMD Enterprise AI Suite license.
-- **Support:** Both paths benefit from AMD's ROCm support. The enterprise path
-  adds dedicated support for the Enterprise AI Suite components.
+- **Control vs. convenience:** The self-managed path gives full control over
+  every component. The Enterprise AI Suite reduces operational burden with a
+  web UI, pre-validated containers, and built-in resource management.
+- **Licensing:** Both paths are fully open source with no AMD licensing
+  requirements.
+- **Enterprise integration:** The Enterprise AI Suite includes built-in RBAC
+  and federation with existing SSO and IAM solutions, which teams assembling
+  their own stack must configure separately.

@@ -99,25 +99,3 @@ python3 -m http.server -d ./docs/_build/html/
 ```
 
 You can now view the docs site by going to <http://localhost:8000>
-
-### Auto-building the docs
-
-The below will allow you to watch the docs directory and rebuild the documenatation each time you make a change to the documentation files:
-
-Install Sphinx Autobuild package:
-
- ```bash
- pip install sphinx-autobuild
- ```
-
-Run the autobuild (will also serve the docs on port 8000 automatically):
-
- ```bash
- sphinx-autobuild -b html -d _build/doctrees -D language=en ./docs docs/_build/html --ignore "docs/_build/*" --ignore "docs/sphinx/_toc.yml" --ignore "docs/sphinx/requirements.txt"
- ```
-
-### Troubleshooting
-
-#### Navigation Menu not displaying new links
-
-Note that if you've recently added a new link to the navigation menu previously unchanged pages may not correctly display the new link. To fix this delete the existing `_build/` directory and rebuild the docs so that the navigation menu will be rebuilt for all pages.

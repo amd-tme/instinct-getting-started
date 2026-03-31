@@ -57,6 +57,7 @@ CPP
 CPU
 CPUs
 CX
+Ceph
 Cron
 CSC
 CSE
@@ -238,6 +239,7 @@ MIOpenGEMM
 MIOpen's
 MIVisionX
 MLM
+MLOps
 MLPerf
 MMA
 MMIO
@@ -257,6 +259,7 @@ Megatron
 Mellanox
 Mellanox's
 Meta's
+Microservices
 Miniconda
 MirroredStrategy
 Mixtral
@@ -268,6 +271,7 @@ NBIO
 NBIOs
 NCCL
 NCF
+NFS
 NIC
 NICs
 NLI
@@ -305,6 +309,7 @@ OSS
 OSU
 Omniperf
 OpenCL
+OpenSHMEM
 OpenCV
 OpenFabrics
 OpenGL
@@ -376,6 +381,7 @@ ROCr
 RPP
 RST
 RW
+RadixAttention
 Radeon
 RelWithDebInfo
 Req
@@ -475,6 +481,7 @@ VALU
 VBIOS
 VGPR
 VGPRs
+VLM
 VM
 VMEM
 VMWare
@@ -817,6 +824,7 @@ runtimes
 sL
 scalability
 scalable
+schedulable
 scipy
 seealso
 sendmsg
@@ -851,6 +859,7 @@ tokenization
 tokenize
 tokenized
 tokenizer
+tokenizers
 tokenizes
 toolchain
 toolchains

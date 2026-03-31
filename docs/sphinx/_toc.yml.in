@@ -36,3 +36,13 @@ subtrees:
               title: Tensorwave
             - file: journeys/cloud/vultr/readme.md
               title: Vultr
+  - caption: "Software Ecosystem"
+    entries:
+      - file: ecosystem/index.md
+      - file: ecosystem/amd-components.md
+      - file: ecosystem/open-source-ecosystem.md
+      - file: ecosystem/third-party-infrastructure.md
+      - file: ecosystem/reference-architectures/index.md
+        subtrees:
+          - entries:
+            - file: ecosystem/reference-architectures/inference-as-a-service.md

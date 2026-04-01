@@ -15,6 +15,7 @@ The AMD Developer Cloud (ADC) is AMD's own hosted GPU environment, purpose-built
 Qualified developers can receive **$100 in complimentary AMD Developer Cloud credits** by joining the AMD AI Developer Program.
 
 **Eligibility:**
+
 - Independent developers and open-source project contributors
 - Involvement with ML, low-level programming, or AI application development
 - Intended use cases: inference, training, fine-tuning

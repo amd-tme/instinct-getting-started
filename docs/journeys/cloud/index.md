@@ -17,7 +17,7 @@ AMD Instinct GPUs are available across a growing ecosystem of cloud providers â€
 :link-type: doc
 :class-card: journey-card
 
-**Start here for free access**
+## Start here for free access
 
 The fastest way to get hands-on with AMD Instinct MI300X GPUs. AMD's own developer-focused cloud offers instant access with no hardware investment required.
 
@@ -34,7 +34,7 @@ The fastest way to get hands-on with AMD Instinct MI300X GPUs. AMD's own develop
 :link-type: doc
 :class-card: journey-card
 
-**Try before you buy**
+## Try before you buy
 
 AMD's cloud service partners offer proof-of-concept access to AMD Instinct GPUs with support from both AMD and the provider. Ideal for evaluating AMD hardware before a production commitment.
 

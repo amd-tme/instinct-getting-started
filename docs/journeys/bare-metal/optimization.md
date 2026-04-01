@@ -35,17 +35,17 @@ Effective optimization starts with identifying bottlenecks through proper profil
 
 ROCm offers several profiling tools to analyze GPU performance:
 
-1. **ROCProfiler SDK (rocprofv3)** - Next-generation profiling toolkit
+1. **[ROCProfiler SDK (rocprofv3)](https://rocm.docs.amd.com/projects/rocprofiler-sdk/en/latest/)** - Next-generation profiling toolkit
    - Enhanced tracing capabilities
    - Improved initialization performance
    - Comprehensive API services
 
-2. **ROCm Compute Profiler** - GUI-based analysis tool built on ROCProfiler
+2. **[ROCm Compute Profiler](https://rocm.docs.amd.com/projects/rocm-compute-profiler/en/latest/)** - GUI-based analysis tool built on ROCProfiler
    - Visualizes performance data
    - Provides guided bottleneck identification
    - Offers memory analysis capabilities
 
-3. **ROCProfiler (rocprof)** - Command-line tool for collecting hardware metrics and API traces
+3. **[ROCProfiler (rocprof)](https://rocm.docs.amd.com/projects/rocprofiler/en/latest/)** - Command-line tool for collecting hardware metrics and API traces
    - Lists performance counters
    - Tracks kernel execution
    - Monitors memory operations
@@ -74,7 +74,7 @@ Memory performance is often a critical factor in GPU computing performance.
    - Structure algorithms to maximize bandwidth utilization; high-bandwidth memory is the key advantage of the Instinct architecture
 
 4. **Memory Pool Management**
-   - Use hip-extensions for memory allocations
+   - Use [hip-extensions](https://github.com/ROCm/hip-extensions) for memory allocations
    - Monitor memory fragmentation
    - Implement proper cleanup procedures
 
@@ -108,16 +108,16 @@ For detailed workload-specific optimization guidance, refer to the [ROCm for AI 
 ### AI and Machine Learning
 
 1. **Framework Optimization**
-   - Use ROCm-optimized PyTorch/TensorFlow
-   - Leverage Transformer Engine for LLMs
-   - Consider vLLM for optimized inference
+   - Use ROCm-optimized [PyTorch](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/pytorch-install.html)/[TensorFlow](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/tensorflow-install.html)
+   - Leverage [Transformer Engine](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/transformer-engine.html) for LLMs
+   - Consider [vLLM](https://docs.vllm.ai/en/latest/) for optimized inference
 
 2. **Model Optimization**
    - Explore quantization (FP16, BF16, FP8 on CDNA 3; additionally MXFP4/MXFP6/MXFP8 on CDNA 4)
    - Enable tensor parallelism for large models
    - Leverage sparsity support for additional inference throughput
 
-For detailed ML optimization techniques, refer to the [ROCm for AI Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/index.html). Note that vLLM, SGLang, and other inference frameworks have AMD-specific configuration options — consult each project's documentation for ROCm-specific guidance.
+For detailed ML optimization techniques, refer to the [ROCm for AI Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/index.html). Note that [vLLM](https://docs.vllm.ai/en/latest/), [SGLang](https://docs.sglang.ai/), and other inference frameworks have AMD-specific configuration options — consult each project's documentation for ROCm-specific guidance.
 
 ### High Performance Computing
 
@@ -127,7 +127,7 @@ For detailed ML optimization techniques, refer to the [ROCm for AI Guide](https:
    - Tune RDMA settings
 
 2. **Math Library Selection**
-   - Use optimized libraries (rocBLAS, rocRAND, etc.)
+   - Use optimized libraries ([rocBLAS](https://rocm.docs.amd.com/projects/rocBLAS/en/latest/), [rocRAND](https://rocm.docs.amd.com/projects/rocRAND/en/latest/), etc.)
    - Leverage highly-tuned algorithmic implementations
    - Consider architecture-specific math routines
 
@@ -148,7 +148,7 @@ After implementing optimizations, verify the results:
    - Measure key metrics improvement
 
 3. **Performance Monitoring**
-   - Use rocm-smi or AMD-smi for real-time monitoring
+   - Use [AMD-smi](https://rocm.docs.amd.com/projects/amdsmi/en/latest/) for real-time monitoring
    - Track thermal and power characteristics
    - Monitor memory usage patterns
 

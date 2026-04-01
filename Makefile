@@ -11,6 +11,7 @@
 #   linkcheck   Check all external links for validity via Sphinx
 #   lint        Run markdownlint on all docs source files
 #   lint-fix    Run markdownlint --fix on all docs source files
+#   spellcheck  Run pyspelling on all docs source files
 #   clean       Remove all build artifacts
 #
 # Sphinx options can be overridden at the command line:
@@ -24,7 +25,7 @@ EPUB_FILE      = $(BUILDDIR)/epub/*.epub
 DOCX_OUT       = $(BUILDDIR)/docx/instinct-getting-started.docx
 HTMLZIP_OUT    = $(BUILDDIR)/htmlzip/instinct-getting-started.zip
 
-.PHONY: help html htmlzip latex pdf epub docx all linkcheck lint lint-fix clean
+.PHONY: help html htmlzip latex pdf epub docx all linkcheck lint lint-fix spellcheck clean
 
 help:
 	@echo ""
@@ -43,6 +44,7 @@ help:
 	@echo "    linkcheck  Verify all external links via Sphinx"
 	@echo "    lint       markdownlint check (uses .markdownlint.yaml)"
 	@echo "    lint-fix   markdownlint --fix (auto-corrects fixable issues)"
+	@echo "    spellcheck pyspelling spell check (uses .spellcheck.yaml)"
 	@echo ""
 	@echo "  Utility:"
 	@echo "    clean      Remove docs/_build/"
@@ -115,6 +117,11 @@ lint:
 
 lint-fix:
 	markdownlint --config .markdownlint.yaml --fix "docs/**/*.md"
+
+# Runs pyspelling against all .md and .rst files under docs/, using the
+# pipeline configuration defined in .spellcheck.yaml.
+spellcheck:
+	pyspelling --config .spellcheck.yaml
 
 # ---------------------------------------------------------------------------
 # Utility

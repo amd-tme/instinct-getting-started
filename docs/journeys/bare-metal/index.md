@@ -20,10 +20,6 @@ If you're looking for a more managed deployment option with reduced setup comple
 
 Let's begin your journey with [Hardware Selection](hardware-selection/).
 
-## Your Journey Path
-
-![Bare Metal Journey Path](../../_static/images/bare_metal.svg)
-
 ### [1. Hardware Selection](hardware-selection/)
 
 Review the current AMD Instinct GPU lineup — from MI300X through MI355X — and understand key selection criteria including memory capacity, supported precision formats, and platform requirements. Links to per-GPU specifications and the Customer Acceptance Guide are provided for deeper technical detail.

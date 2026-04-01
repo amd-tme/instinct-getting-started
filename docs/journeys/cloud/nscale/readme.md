@@ -1,4 +1,4 @@
-Nscale AMD Instinct GPU Offerings
+# Nscale
 
 ## Overview
 

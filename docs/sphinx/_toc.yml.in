@@ -15,27 +15,28 @@ subtrees:
         title: Cloud
         subtrees:
           - entries:
-            - file: journeys/cloud/provider-selection.md
-            - file: journeys/cloud/provisioning.md
-            - file: journeys/cloud/environment-setup.md
-          - caption: "Cloud Providers"
-            entries:
-            - file: journeys/cloud/azure/readme.md
-              title: Azure
-            - file: journeys/cloud/cirrascale/readme.md
-              title: Cirrascale
-            - file: journeys/cloud/hotaisle/readme.md
-              title: Hotaisle
-            - file: journeys/cloud/ibmcloud/readme.md
-              title: IBM Cloud
-            - file: journeys/cloud/nscale/readme.md
-              title: Nscale
-            - file: journeys/cloud/oraclecloud/readme.md
-              title: Oracle Cloud
-            - file: journeys/cloud/tensorwave/readme.md
-              title: Tensorwave
-            - file: journeys/cloud/vultr/readme.md
-              title: Vultr
+              - file: journeys/cloud/provider-selection.md
+                subtrees:
+                  - caption: "Cloud Providers"
+                    entries:
+                      - file: journeys/cloud/azure/readme.md
+                        title: Azure
+                      - file: journeys/cloud/cirrascale/readme.md
+                        title: Cirrascale
+                      - file: journeys/cloud/hotaisle/readme.md
+                        title: Hotaisle
+                      - file: journeys/cloud/ibmcloud/readme.md
+                        title: IBM Cloud
+                      - file: journeys/cloud/nscale/readme.md
+                        title: Nscale
+                      - file: journeys/cloud/oraclecloud/readme.md
+                        title: Oracle Cloud
+                      - file: journeys/cloud/tensorwave/readme.md
+                        title: TensorWave
+                      - file: journeys/cloud/vultr/readme.md
+                        title: Vultr
+              - file: journeys/cloud/provisioning.md
+              - file: journeys/cloud/environment-setup.md
   - caption: "Software Ecosystem"
     entries:
       - file: ecosystem/index.md

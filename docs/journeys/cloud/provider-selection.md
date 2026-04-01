@@ -1,10 +1,5 @@
 # Provider selection
 
-:::{card}
-:class-card: journey-progress
-**[Provider Selection](provider-selection.md)** → [Provisioning](provisioning.md) →  [Environment Setup](environment-setup.md)
-:::
-
 ## Choosing the Right Cloud Provider
 
 The cloud ecosystem for AMD Instinct accelerators is rapidly expanding, offering diverse options from major hyperscalers to specialized GPU cloud providers. This guide helps you navigate the available choices and select the optimal provider for your specific workload requirements.

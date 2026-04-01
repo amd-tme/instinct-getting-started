@@ -1,4 +1,4 @@
-TensorWave AMD Instinct GPU Offerings
+# TensorWave
 
 ## Overview
 

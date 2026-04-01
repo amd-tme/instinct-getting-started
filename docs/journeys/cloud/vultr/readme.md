@@ -1,4 +1,4 @@
-Vultr AMD Instinct GPU Offerings
+# Vultr
 
 ## Overview
 

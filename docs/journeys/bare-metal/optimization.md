@@ -1,10 +1,5 @@
 # Optimization
 
-:::{card}
-:class-card: journey-progress
-[Hardware Selection](hardware-selection.md) → [Installation](installation.md) → [Environment Setup](environment-setup.md) → [Validation](validation.md) → **[Optimization](optimization.md)**
-:::
-
 This guide provides a high-level overview of optimization approaches for AMD Instinct accelerators in a single-node environment. For detailed, step-by-step instructions, refer to the linked official documentation.
 
 ## System-Level Optimization

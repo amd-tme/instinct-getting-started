@@ -1,10 +1,5 @@
 # Environment Setup
 
-:::{card}
-:class-card: journey-progress
-[Hardware Selection](hardware-selection.md) → [Installation](installation.md) → **[Environment Setup](environment-setup.md)** → [Validation](validation.md) → [Optimization](optimization.md)
-:::
-
 ## Environment Setup for AMD Instinct™ GPUs on Bare Metal
 
 ## Configuring Your Bare Metal Environment

@@ -1,10 +1,5 @@
 # Hardware Selection
 
-:::{card}
-:class-card: journey-progress
-**[Hardware Selection](hardware-selection.md)** → [Installation](installation.md) → [Validation](validation.md) → [Optimization](optimization.md)
-:::
-
 ## Introduction
 
 Selecting the right AMD Instinct GPU accelerator for your workload is a critical first step in your bare metal deployment journey. This guide will help you understand the available options and make an informed decision based on your specific requirements.

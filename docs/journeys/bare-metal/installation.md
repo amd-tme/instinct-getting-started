@@ -1,10 +1,5 @@
 # Installation
 
-:::{card}
-:class-card: journey-progress
-[Hardware Selection](hardware-selection.md) → **[Installation](installation.md)** → [Validation](validation.md) → [Optimization](optimization.md)
-:::
-
 This guide provides a high-level overview of the installation process for AMD Instinct accelerators. For detailed, step-by-step instructions, please refer to the [official ROCm documentation](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/index.html).
 
 ## Prerequisites

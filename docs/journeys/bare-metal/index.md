@@ -1,10 +1,5 @@
 # Overview
 
-:::{card}
-:class-card: journey-progress
-[Hardware Selection](hardware-selection.md) → [Installation](installation.md) → [Environment Setup](environment-setup.md) → [Validation](validation.md) → [Optimization](optimization.md)
-:::
-
 ## Getting Started with Direct Hardware Deployment
 
 The Bare Metal journey provides a comprehensive path for deploying AMD Instinct accelerators directly on your hardware infrastructure. Whether you're setting up a development workstation, building an AI inference server, or constructing a high-performance computing cluster, this guide will walk you through the essential steps from hardware selection to performance optimization.

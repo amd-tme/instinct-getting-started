@@ -20,7 +20,7 @@ html_theme_options = {
     "flavor": "instinct",
     "link_main_doc": True,
 }
-extensions = ["rocm_docs", "sphinx.ext.imgconverter"]
+extensions = ["rocm_docs", "sphinx.ext.imgconverter", "rocm_docs.journey_line"]
 
 # Table of contents
 external_toc_path = "./sphinx/_toc.yml"
@@ -28,4 +28,7 @@ external_toc_path = "./sphinx/_toc.yml"
 exclude_patterns = [".venv"]
 
 html_static_path = ["_static"]
-html_css_files = ["css/journey.css"]
+
+# Journey-line navigation bars are auto-generated from the TOC for HTML
+# builds only. PDF, epub, and docx outputs are unaffected.
+journey_line_enabled = True

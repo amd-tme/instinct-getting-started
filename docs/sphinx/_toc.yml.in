@@ -15,6 +15,8 @@ subtrees:
         title: Cloud
         subtrees:
           - entries:
+              - file: journeys/cloud/amd-developer-cloud/readme.md
+                title: AMD Developer Cloud
               - file: journeys/cloud/provider-selection.md
                 subtrees:
                   - caption: "Cloud Providers"
@@ -23,8 +25,14 @@ subtrees:
                         title: Azure
                       - file: journeys/cloud/cirrascale/readme.md
                         title: Cirrascale
+                      - file: journeys/cloud/crusoe/readme.md
+                        title: Crusoe
+                      - file: journeys/cloud/digitalocean/readme.md
+                        title: DigitalOcean
+                      - file: journeys/cloud/evergrid/readme.md
+                        title: Evergrid AI
                       - file: journeys/cloud/hotaisle/readme.md
-                        title: Hotaisle
+                        title: Hot Aisle
                       - file: journeys/cloud/ibmcloud/readme.md
                         title: IBM Cloud
                       - file: journeys/cloud/nscale/readme.md

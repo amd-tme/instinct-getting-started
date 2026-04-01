@@ -1,160 +1,213 @@
-# Provider selection
+# Provider Selection
 
 ## Choosing the Right Cloud Provider
 
-The cloud ecosystem for AMD Instinct accelerators is rapidly expanding, offering diverse options from major hyperscalers to specialized GPU cloud providers. This guide helps you navigate the available choices and select the optimal provider for your specific workload requirements.
+The cloud ecosystem for AMD Instinct accelerators is rapidly expanding, offering diverse options from AMD's own developer cloud and major hyperscalers to specialized GPU cloud providers. This guide helps you navigate the available choices and select the optimal provider for your specific workload requirements.
+
+## Start Here: AMD Developer Cloud
+
+Before evaluating third-party providers, consider the **AMD Developer Cloud** — AMD's own hosted GPU environment designed for developers, researchers, and open-source contributors.
+
+**Why start with AMD Developer Cloud:**
+
+- **Free credits**: AMD AI Developer Program members receive $100 in complimentary cloud credits
+- **Zero setup**: Jupyter Notebook and Docker containers pre-configured on launch
+- **No commitment**: Pay-as-you-go with no contracts
+- **MI300X GPUs**: 1x (192 GB) or 8x (1,536 GB) configurations
+
+The AMD Developer Cloud is powered by DigitalOcean infrastructure and is the fastest way to evaluate AMD Instinct GPUs before committing to a provider.
+
+[Learn more →](amd-developer-cloud/readme)
+
+---
+
+## AMD Instinct Evaluation Program
+
+Multiple cloud providers participate in AMD's formal evaluation program, which offers guided proof-of-concept access to AMD Instinct GPUs. Apply at [amd.com/en/products/accelerators/instinct/eval-request](https://www.amd.com/en/products/accelerators/instinct/eval-request.html).
+
+**Current evaluation program partners:** Microsoft Azure, Oracle Cloud, Crusoe, TensorWave, Vultr, DigitalOcean, IBM Cloud, Cirrascale, Hot Aisle, and Evergrid AI.
+
+---
 
 ## Major Cloud Providers
 
 ### Microsoft Azure
 
-Azure was the first major cloud provider to integrate AMD Instinct MI300X accelerators and offers enterprise-grade infrastructure with global reach.
+Azure offers AMD Instinct MI300X accelerators through the **ND MI300X v5 series** — enterprise-grade infrastructure with global reach and managed service integrations.
 
 **Key Features:**
 
-- **ND MI300X v5 instances**: Optimized VM configurations with 8x MI300X accelerators
-- **Global availability**: Multiple regions with planned expansion
-- **Enterprise integration**: Seamless integration with Azure services and Microsoft ecosystem
-- **Managed services**: Support for AKS (Azure Kubernetes Service) and other managed platforms
+- **VM size**: `Standard_ND96isr_MI300X_v5` — 96 vCPUs, 1,850 GiB memory
+- **GPUs per VM**: 8x AMD Instinct MI300X (192 GB each, 1.5 TB total)
+- **Interconnect**: 4th-Gen AMD Infinity Fabric links, 128 GB/s per GPU (896 GB/s aggregate)
+- **Networking**: 400 Gb/s NVIDIA Quantum-2 CX7 InfiniBand per GPU with GPUDirect RDMA
+- **Scale-out**: Thousands of GPUs with 3.2 Tb/s interconnect bandwidth per VM
+- **Managed services**: Azure Kubernetes Service (AKS), Azure HPC deployments
 
-[Learn more about Azure deployment →](azure/)
+[Learn more about Azure deployment →](azure/readme)
+
+---
 
 ### Oracle Cloud Infrastructure (OCI)
 
-OCI offers some of the largest AMD GPU deployments with supercluster configurations supporting massive scale-out workloads.
+OCI offers AMD Instinct MI300X bare metal instances with one of the largest scale-out configurations available in the cloud.
 
 **Key Features:**
 
-- **Supercluster support**: Up to 16,384 MI300X GPUs in single fabric
-- **Bare metal instances**: Direct hardware access with minimal virtualization overhead
-- **High-performance networking**: Ultra-low latency interconnects for distributed training
+- **Instance type**: `BM.GPU.MI300X.8` — 8x MI300X GPUs, bare metal
+- **Pricing**: $6.00 per GPU/hour
+- **Memory**: 1.5 TB HBM3 GPU memory (5.3 TB/s bandwidth)
+- **CPU**: 2x Intel Sapphire Rapids (56c each), 2 TB DDR5 system memory
+- **Networking**: 8x 400G cluster network ports for RDMA
+- **Supercluster**: Up to 16,384 MI300X GPUs in a single OCI Supercluster fabric
 
-[Learn more about OCI deployment →](oracle/)
+[Learn more about OCI deployment →](oraclecloud/readme)
 
-## Specialized GPU Cloud Providers
-
-### Hot Aisle
-
-Hot Aisle is a specialized provider of high-performance bare metal compute solutions focused exclusively on AMD Instinct accelerators.
-
-**Key Features:**
-
-- **Deep AMD Expertise**: Specialized knowledge of ROCm and AMD software stack and extensive knowledge of Instinct architecture
-- **Custom Architectures**: Tailored solutions for specific workload requirements
-- **Future-Proof Designs**: Built for long-term scalability and performance growth
-
-[Learn more about OCI deployment →](hotaisle/)
-
-### Nscale
-
-Nscale provides on-demand high-performance computing with advanced bare metal solutions based on AMD Instinct accelerators.
-
-**Key Features:**
-
-- **Bare metal focus**: Direct hardware access for maximum performance
-- **Flexible configurations**: Various instance types and scaling options
-- **Developer-friendly**: Easy provisioning and management interfaces
-- **AMD specialization**: Deep expertise in AMD hardware optimization
-
-[Learn more about Nscale deployment →](nscale/)
-
-### TensorWave
-
-TensorWave is building the world's largest AMD GPU clusters with a focus on AI-optimized infrastructure and services.
-
-**Key Features:**
-
-- **AMD-focused platform**: Specialized expertise in AMD Instinct deployments
-- **Gigawatt-scale clusters**: Planning massive deployments of MI300X, MI325X, and MI350X
-- **AI-optimized services**: Purpose-built for machine learning and AI workloads
-- **Competitive pricing**: Often more cost-effective than major cloud providers
-
-[Learn more about TensorWave deployment →](tensorwave/)
-
-### Vultr
-
-Vultr offers AMD Instinct MI300X GPUs for AI and ML workloads, designed to handle compute-intensive tasks efficiently.
-
-**Key Features:**
-
-- **GPUs Available**: AMD Instinct MI300X and MI325X accelerators
-- **Deployment Options**: Available as either virtual machines or bare metal
-- **Use Cases**: Ideal for AI/ML, deep learning, and high-performance computing
-
-[Learn more about Vultr deployment →](vultr/)
+---
 
 ### IBM Cloud
 
-IBM Cloud is adding AMD Instinct MI300X GPUs to its platform in 2025, expanding enterprise options.
+IBM Cloud offers AMD Instinct MI300X accelerators as a service through IBM Cloud Virtual Servers for VPC. Currently under select availability.
 
-**Expected Features:**
+**Key Features:**
 
-- **Enterprise focus**: Integration with IBM's enterprise services and Watson AI
-- **Hybrid cloud**: Strong hybrid and multi-cloud capabilities
-- **Industry solutions**: Vertical-specific AI and analytics solutions
+- **Instance**: 8x AMD Instinct MI300X, 208 vCPUs, 1,792 GB RAM, 8x 3.2 TB NVMe storage
+- **Platform integration**: Support for IBM watsonx AI, Red Hat OpenShift AI, and Red Hat Enterprise Linux AI
+- **Kubernetes**: IBM Cloud Kubernetes Service and Red Hat OpenShift on IBM Cloud
+- **Enterprise focus**: Hybrid cloud and multi-cloud capabilities
 
-[Learn more about IBM Cloud →](ibmcloud/)
+[Learn more about IBM Cloud →](ibmcloud/readme)
 
-## Selection Criteria
+---
 
-### Performance Requirements
+## Specialized GPU Cloud Providers
 
-#### Memory-Intensive Workloads
+### TensorWave
 
-- AMD Instinct GPUs offer superior memory capacity (192GB-256GB per GPU)
-- Ideal for large language models and memory-bound applications
-- Consider providers offering the latest MI325X with 256GB HBM3E
+TensorWave is an AMD-focused cloud and bare metal provider building large-scale AMD GPU clusters with competitive per-GPU pricing and support for AMD's latest accelerators.
 
-#### Compute-Intensive Applications
+**Key Features:**
 
-- Evaluate FP8, FP16, and FP32 performance specifications
-- Consider mixed-precision capabilities for AI workloads
-- Look for providers with optimized ROCm software stacks
+- **GPUs**: MI300X, MI325X, MI355X bare metal
+- **Pricing**: Starting at $1.71/GPU-hr (MI300X), $2.25/GPU-hr (MI325X), $2.95/GPU-hr (MI355X)
+- **Scale**: Over 1 GW of capacity; among the first to deploy MI325X training clusters
+- **Security**: SOC 2 Type II certified and HIPAA compliant
+- **Storage**: Weka high-performance storage integration
+- **Orchestration**: Bare metal, managed Kubernetes, and Slurm clusters
 
-#### Scale Requirements
+[Learn more about TensorWave deployment →](tensorwave/readme)
 
-- Single-node: All providers offer good single-node options
-- Multi-node: OCI and TensorWave excel at large-scale deployments
-- Global reach: Azure offers the broadest geographic coverage
+---
 
-### Cost Considerations
+### Crusoe
 
-#### Pricing Models
+Crusoe is an AI-focused cloud provider offering AMD Instinct MI300X and MI355X instances alongside NVIDIA GPUs. Known for energy-efficient, purpose-built AI infrastructure.
 
-- **On-demand**: Pay-per-hour for flexible workloads
-- **Reserved instances**: Discounted rates for committed usage
-- **Spot pricing**: Significant savings for interruptible workloads
-- **Custom pricing**: Negotiate enterprise rates for large deployments
+**Key Features:**
 
-#### Total Cost of Ownership
+- **GPUs**: AMD MI355X (288 GB HBM3E, CDNA 4) and MI300X (192 GB HBM3)
+- **Pricing**: MI300X from $3.45/GPU-hr on-demand; MI355X contact sales
+- **Pricing models**: On-demand, spot, and reserved capacity
+- **Managed inference**: Pay-as-you-go and provisioned throughput options
+- **Platform**: Managed Kubernetes available
 
-- Consider data transfer costs for large datasets
-- Evaluate storage costs for model artifacts and training data
-- Factor in support and professional services costs
-- Account for any required complementary services
+[Learn more about Crusoe deployment →](crusoe/readme)
 
-## Migration Considerations
+---
 
-### Moving from Other GPU Platforms
+### DigitalOcean
 
-- **CUDA to ROCm**: Consider migration complexity for existing CUDA code
-- **Performance validation**: Test critical workloads before full migration
-- **Training requirements**: Plan for team training on AMD tools and optimization
+DigitalOcean's Gradient AI GPU Droplets provide AMD Instinct GPUs in a developer-friendly environment with fast provisioning and straightforward billing. DigitalOcean also powers the AMD Developer Cloud.
 
-### Multi-Cloud Strategy
+**Key Features:**
 
-- **Vendor diversification**: Reduce dependency on single cloud provider
-- **Cost optimization**: Leverage different providers for different workload types
-- **Risk mitigation**: Ensure business continuity across multiple platforms
+- **GPUs**: MI300X (192 GB), MI325X (256 GB), and MI350X (288 GB, CDNA 4)
+- **Pricing**: On-demand from ~$0.76–$7.99/GPU-hr; reserved rates available
+- **Availability**: NYC2, TOR1, ATL1, RIC1, AMS3 data centers
+- **Developer experience**: Zero-to-GPU in under a minute; pre-installed AI frameworks
+- **SLA**: 99.5% uptime SLA for GPU Droplets
+- **Compliance**: HIPAA-eligible and SOC 2 compliant
+
+[Learn more about DigitalOcean deployment →](digitalocean/readme)
+
+---
+
+### Cirrascale
+
+Cirrascale's AI Innovation Cloud specializes in AMD Instinct accelerators with a transparent, flat-rate billing model and no data transfer fees.
+
+**Key Features:**
+
+- **GPUs**: AMD Instinct MI250, MI300X, and MI325X (now available)
+- **Billing model**: Flat monthly rates — no hourly fluctuations, no ingress/egress fees
+- **Volume discounts**: Up to 20% off with longer commitments (monthly, 3-month, 6-month, annual)
+- **Pre-configured**: AMD drivers, ROCm stack, and Hugging Face transformers included
+- **Heritage**: Trusted by early-stage AI companies including OpenAI
+
+[Learn more about Cirrascale deployment →](cirrascale/readme)
+
+---
+
+### Hot Aisle
+
+Hot Aisle is a specialized provider of high-performance bare metal compute focused exclusively on AMD Instinct accelerators, with deep expertise in ROCm and large-scale cluster architecture.
+
+**Key Features:**
+
+- **Deep AMD expertise**: Specialized knowledge of ROCm and AMD software stack
+- **Custom architectures**: Tailored solutions from compact to multi-data-center scale
+- **Flagship cluster**: 128-GPU MI300X bare metal configurations
+- **Consulting services**: Architecture design, workload optimization, and ongoing support
+
+[Learn more about Hot Aisle deployment →](hotaisle/readme)
+
+---
+
+### Evergrid AI
+
+Evergrid AI is a managed AI infrastructure provider — the "inference neocloud" — focused on single-tenant, high-performance clusters for enterprise and research workloads.
+
+**Key Features:**
+
+- **Scale**: Over 1 GW of capacity under development
+- **Single-tenant**: Dedicated clusters for isolation and predictable performance
+- **24/7 support**: 12-minute response SLA with dedicated engineering contact
+- **Services**: Managed AI (inference/training), compute platform (K8s/Slurm/VMs), fleet operations
+- **Hardware**: Latest emerging hardware with manufacturer-level optimization
+
+[Learn more about Evergrid deployment →](evergrid/readme)
+
+---
+
+### Vultr
+
+Vultr offers AMD Instinct MI300X and MI325X GPUs through both virtual machine and bare metal deployments, with a global data center footprint.
+
+**Key Features:**
+
+- **GPUs**: AMD Instinct MI300X and MI325X
+- **Deployment options**: Virtual machines or bare metal
+- **GPU virtualization**: SR-IOV-based partitioning for cost-efficient resource allocation
+
+[Learn more about Vultr deployment →](vultr/readme)
+
+---
+
+### Nscale
+
+Nscale is a sustainable GPU cloud provider operating from Northern Norway with 100% renewable energy and natural cooling, offering AMD Instinct MI300X and MI250X GPUs.
+
+**Key Features:**
+
+- **Sustainability**: 100% renewable energy, Arctic natural cooling
+- **GPUs**: AMD Instinct MI300X and MI250X
+- **Deployment models**: On-demand, reserved clusters, API endpoints, bare metal
+
+[Learn more about Nscale deployment →](nscale/readme)
 
 ## Next Steps
 
-1. **Assess your requirements** using the criteria above
-2. **Review detailed provider guides** for your shortlisted options
-3. **Test pilot workloads** with your preferred providers
-4. **Negotiate pricing** for production deployments
-5. **Plan deployment strategy** following our provisioning guides
-
-## Additional Resources
-
-- [AMD Cloud Partner Directory](https://www.amd.com/en/partner/cloud-partners)
+1. **Try the AMD Developer Cloud** — free credits available for qualified developers
+2. **Apply for evaluation access** via the [AMD Instinct Evaluation Program](https://www.amd.com/en/products/accelerators/instinct/eval-request.html)
+3. **Review provider-specific guides** for account setup, provisioning, and ROCm configuration
+4. **Follow the [Environment Setup](environment-setup) guide** once you have GPU access

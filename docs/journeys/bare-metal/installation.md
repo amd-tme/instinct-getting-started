@@ -81,7 +81,7 @@ For the full quick-start guide, see [ROCm Quick Start](https://rocm.docs.amd.com
 
 ### Package Manager Method
 
-For more control over the installation, you can add AMD repositories and install packages directly with your distribution's package manager. See the [ROCm Detailed Installation Guide](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/index.html).
+For more control over the installation, you can add AMD repositories and install packages directly with your distribution's package manager. See the [ROCm Detailed Installation Guide](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/install-overview.html).
 
 ### Alternative Methods
 

@@ -25,7 +25,7 @@ Apply these OS-level optimizations:
 - Adjust kernel parameters for optimized I/O
 - Ensure up-to-date drivers and firmware
 
-The [ROCm System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/index.html) includes GPU-specific pages (for example, [MI300X](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/mi300x.html)) — check that guide for the page corresponding to your GPU model.
+The [ROCm System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/index.html) includes GPU-specific pages (for example, [MI300X](https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/system-optimization/mi300x.html)) — check that guide for the page corresponding to your GPU model.
 
 ## Performance Profiling
 
@@ -50,7 +50,7 @@ ROCm offers several profiling tools to analyze GPU performance:
    - Tracks kernel execution
    - Monitors memory operations
 
-Learn more about these tools in the [Profiling and Debugging Guide](https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/profiling-and-debugging.html).
+Learn more about these tools in the [Profiling and Debugging Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference-optimization/profiling-and-debugging.html).
 
 ## Memory Optimization
 

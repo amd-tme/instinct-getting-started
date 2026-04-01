@@ -47,7 +47,7 @@ Large-scale fleet operations with automated provisioning, health checks, and sel
 Evergrid is designed for enterprise and research engagements with dedicated infrastructure needs.
 
 1. **Contact an Engineer**
-   Visit [evergrid.ai](https://www.evergrid.ai/contact/) and speak directly with an Evergrid engineer to describe your requirements.
+   Visit [evergrid.ai](https://evergrid.ai/contact/) and speak directly with an Evergrid engineer to describe your requirements.
 
 2. **Capacity Planning**
    - Discuss scale (number of GPUs, cluster topology)
@@ -62,11 +62,11 @@ Evergrid is designed for enterprise and research engagements with dedicated infr
 
 ## Documentation and Resources
 
-- [Evergrid AI Platform](https://www.evergrid.ai/)
-- [Evergrid Services](https://www.evergrid.ai/contact/)
+- [Evergrid AI Platform](https://evergrid.ai/)
+- [Evergrid Services](https://evergrid.ai/contact/)
 - [AMD ROCm Documentation](https://rocm.docs.amd.com/)
 
 ## Support
 
-- [Evergrid Engineering Contact](https://www.evergrid.ai/contact/)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)
+- [Evergrid Engineering Contact](https://evergrid.ai/contact/)
+- [ROCm GitHub Discussions](https://github.com/ROCm/ROCm/discussions)

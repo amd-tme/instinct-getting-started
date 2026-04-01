@@ -83,4 +83,3 @@ Reserved capacity pricing is available for longer commitments. [Contact Crusoe s
 ## Support
 
 - [Crusoe Support](https://www.crusoe.ai/contact-sales)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)

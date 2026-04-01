@@ -6,7 +6,7 @@ The AMD Developer Cloud (ADC) is AMD's own hosted GPU environment, purpose-built
 
 **This is the fastest way to get started with AMD Instinct GPUs.**
 
-[Sign up at devcloud.amd.com →](https://devcloud.amd.com/)
+[Sign up at amd.digitalocean.com →](https://amd.digitalocean.com/login)
 
 ## Access Options
 
@@ -62,7 +62,7 @@ The AMD Developer Cloud provides access to the full ROCm software stack, includi
 
 ### 1. Create Your Account
 
-Visit [devcloud.amd.com](https://devcloud.amd.com/) and sign up. If you're applying for free credits, apply through the [AMD AI Developer Program](https://www.amd.com/en/developer/ai-dev-program.html) first.
+Visit [amd.digitalocean.com](https://amd.digitalocean.com/login) and sign up. If you're applying for free credits, apply through the [AMD AI Developer Program](https://www.amd.com/en/developer/ai-dev-program.html) first.
 
 ### 2. Launch a GPU Instance
 
@@ -96,7 +96,7 @@ print(torch.cuda.get_device_name(0))
 
 ## Documentation and Resources
 
-- [AMD Developer Cloud Portal](https://devcloud.amd.com/)
+- [AMD Developer Cloud Login](https://amd.digitalocean.com/login)
 - [How to Get Started on the AMD Developer Cloud](https://www.amd.com/en/developer/resources/technical-articles/2025/how-to-get-started-on-the-amd-developer-cloud-.html)
 - [ROCm AI Developer Hub](https://www.amd.com/en/developer/resources/rocm-hub/dev-ai.html)
 - [Instinct GPU Documentation](https://instinct.docs.amd.com/latest/)
@@ -105,5 +105,4 @@ print(torch.cuda.get_device_name(0))
 ## Support
 
 - [DigitalOcean Cloud Support](https://cloudsupport.digitalocean.com/) (AMD Developer Cloud is hosted by DigitalOcean)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)
-- [devcloudrequests@amd.com](mailto:devcloudrequests@amd.com) — for credit and account questions
+- [ROCm GitHub Discussions](https://github.com/ROCm/ROCm/discussions)

@@ -96,4 +96,3 @@ IBM Cloud participates in the AMD Instinct GPU Evaluation Program. Visit the [AM
 
 - [IBM Cloud Support](https://www.ibm.com/cloud/support)
 - [IBM Cloud Community](https://community.ibm.com/community/user/cloud/home)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)

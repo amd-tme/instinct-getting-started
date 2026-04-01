@@ -104,5 +104,3 @@ Cirrascale participates in the AMD Instinct GPU Evaluation Program, allowing pot
 ## Support
 
 - [Cirrascale Support](https://www.cirrascale.com/support/)
-- [Cirrascale Knowledge Base](https://www.cirrascale.com/resources/)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)

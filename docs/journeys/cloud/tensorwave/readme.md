@@ -83,11 +83,9 @@ TensorWave participates in the AMD Instinct GPU Evaluation Program. Visit the [A
 
 - [TensorWave Platform](https://tensorwave.com/)
 - [TensorWave AI GPU Cloud Guide](https://tensorwave.com/blog/ai-gpu-cloud)
-- [AMD ROCm Documentation](https://rocm.docs.amd.com/)
-- [TensorWave GitHub Examples](https://github.com/tensorwave-ai)
 
 ## Support
 
 - [TensorWave Support](https://tensorwave.com/support/)
 - [TensorWave Documentation](https://docs.tensorwave.com/)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)
+- [ROCm GitHub Discussions](https://github.com/ROCm/ROCm/discussions)

@@ -26,7 +26,7 @@ The fastest way to get hands-on with AMD Instinct MI300X GPUs. AMD's own develop
 * Pre-configured Docker containers and Jupyter Notebooks
 * 1x or 8x GPU configurations
 
-[devcloud.amd.com](https://devcloud.amd.com/)
+[https://amd.digitalocean.com](https://amd.digitalocean.com/login)
 :::
 
 :::{grid-item-card} Evaluate Through a Partner

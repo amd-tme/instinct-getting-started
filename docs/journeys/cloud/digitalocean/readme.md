@@ -102,4 +102,3 @@ The AMD Developer Cloud — AMD's own hosted GPU program — is powered by Digit
 
 - [DigitalOcean Support](https://www.digitalocean.com/products/support)
 - [DigitalOcean GPU SLA](https://docs.digitalocean.com/products/droplets/details/gpu-sla/)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)

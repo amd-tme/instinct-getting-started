@@ -1,160 +1,96 @@
 # Validation
 
-This guide provides a high-level overview of validation procedures for AMD Instinct accelerators in a single-node environment. For detailed step-by-step instructions, refer to the linked official documentation.
+This page provides a high-level overview of validation procedures for AMD Instinct accelerators on bare metal. The goal is to confirm that ROCm is installed and your GPUs are visible before moving on to formal acceptance testing.
 
-## Basic System Validation
+For comprehensive, production-grade validation — including BIOS prerequisites, health checks, benchmark baselines, and explicit pass/fail acceptance criteria — refer to the **[AMD Instinct Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/)**.
 
-After completing the hardware installation and software setup, perform these basic validation steps to ensure your Instinct GPU is properly recognized and functioning.
+## Quick Sanity Check
 
-### 1. Verify GPU Detection
-
-First, confirm that your system properly detects the installed Instinct GPU(s):
+After completing [Installation](installation.md), run these commands to confirm ROCm can see your GPUs:
 
 ```bash
-# Check if GPU is detected by ROCm
+# Confirm ROCm installation and GPU detection
+rocminfo
+
+# Monitor GPU status, power, and temperature
 amd-smi monitor
 ```
 
-### 2. Run Hardware Diagnostics
+If `rocminfo` lists your GPUs and `amd-smi monitor` shows them in a healthy state, ROCm is installed correctly and you can proceed to formal validation.
 
-For comprehensive hardware validation, use the ROCm Validation Suite (RVS):
+If GPUs are not detected, check:
 
-```bash
-# List available GPUs
-/opt/rocm/bin/rvs -g
+1. User group membership — your user must be in the `render` and `video` groups:
 
-# Run a general system test
-/opt/rocm/bin/rvs -c /opt/rocm/share/rocm-validation-suite/conf/<your_gpu_model>/gst_single.conf
-```
+   ```bash
+   groups | grep -E 'render|video'
+   sudo usermod -a -G render,video $USER
+   # Log out and back in for group changes to take effect
+   ```
 
-RVS provides thorough testing through various test modules:
+2. Kernel messages for driver errors:
 
-- GST (GPU Stress Test) - Validates GPU functionality under load
-- GPUP (GPU Properties) - Shows detailed hardware information
-- PBQT (P2P Bandwidth and Latency) - Tests peer-to-peer performance
-- PEBB (PCIe Bandwidth) - Measures PCIe throughput
-- PEQT (PCIe Qualification) - Verifies PCIe compliance
+   ```bash
+   dmesg | grep -i amdgpu
+   ```
 
-## Software Stack Validation
+3. ROCm environment paths:
 
-Verify that the ROCm software stack is properly installed and functioning.
+   ```bash
+   echo $PATH | grep rocm
+   ```
 
-### 1. Check ROCm Installation
+## Formal Acceptance Testing
 
-```bash
-# Verify ROCm version
-/opt/rocm/bin/hipcc --version
+For production deployments, passing the quick sanity check is only the beginning. The [Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/) provides a structured, two-phase validation methodology:
 
-# Check HIP environment
-HIP_PLATFORM=amd /opt/rocm/bin/hipconfig --full
-```
+### Phase 1: Node (Single-System) Validation
 
-### 2. Run a Simple HIP Test Program
+Start with the page for your specific GPU model. Each GPU page walks you through the complete per-node acceptance sequence:
 
-Create a simple test file to verify that your HIP environment is working correctly:
+- **[MI355X](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/gpus/mi355x.html)**
+- **[MI350X](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/gpus/mi350x.html)**
+- **[MI325X](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/gpus/mi325x.html)**
+- **[MI300X](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/gpus/mi300x.html)**
 
-```bash
-# Create a test directory
-mkdir -p ~/hip_test && cd ~/hip_test
+The GPU pages direct you through:
 
-# Download a simple HIP example (or create from documentation)
-git clone https://github.com/ROCm/rocm-examples.git
-cd rocm-examples/HIP-Basic/hello_world
+1. **[System Prerequisites](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/common/prerequisites.html)** — Firmware/BIOS alignment and OS tuning required before any testing
+2. **[Health Checks](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/common/health-checks.html)** — Rapid validation of OS state, GPU visibility, PCIe links, and interconnect health
+3. **[System Validation and Benchmarks](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/common/system-validation.html)** — Comprehensive validation using AMD GPU Field Health Check (AGFHC) and microbenchmarks (TransferBench, RCCL, rocBLAS, BabelStream)
 
-# Build and run the example
-mkdir build && cd build
-cmake ..
-make
-./hip_hello_world
-```
+### Phase 2: Cluster and Network Validation
 
-This simple test confirms that:
+After validating individual nodes, proceed with multi-node testing:
 
-- HIP compiler is working
-- GPU is accessible for computation
-- ROCm runtime is functioning
+- NIC driver installation and network configuration
+- RDMA benchmarking
+- Multi-node RCCL and LLM workload validation
 
-## Performance Validation
+Full details are in the [Cluster & Network Validation](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/#cluster-network-validation) section of the acceptance guide.
 
-After confirming basic functionality, validate the performance of your Instinct GPU.
+## Cluster Validation Suite (CVS)
 
-### 1. Memory Bandwidth Testing - FIX
+Many of the node and cluster validation steps can be automated using the **Cluster Validation Suite (CVS)**, which verifies health and performance across multiple nodes without requiring extensive manual intervention.
 
-Test the memory bandwidth using a benchmark like STREAM:
+- [CVS Documentation](https://rocm.docs.amd.com/projects/cvs/en/latest/)
+- [CVS GitHub Repository](https://github.com/ROCm/cvs)
+
+## Framework Smoke Tests
+
+Once the system is validated, a quick check that your target framework can see the GPUs is useful before moving on to workloads:
 
 ```bash
-# Clone and build a HIP-compatible STREAM benchmark
-git clone https://github.com/ROCm-Developer-Tools/HIP-Examples.git
-cd HIP-Examples/cuda-stream
-make
-./stream
-```
+# PyTorch
+python3 -c "import torch; print('GPU count:', torch.cuda.device_count())"
 
-### 2. Compute Performance Testing - FIX
-
-Validate computational performance:
-
-```bash
-# Run a matrix multiplication benchmark
-cd ~/HIP-Examples/HIP-Examples-Applications/MatrixMultiplication
-make
-./matrixmul
-```
-
-## Framework-Specific Validation - ADD INSTALL STEPS/LINS
-
-If you plan to use specific frameworks, verify their compatibility with your Instinct GPU.
-
-### Deep Learning Frameworks
-
-```bash
-# For PyTorch
-python3 -c "import torch; print('GPU available:', torch.cuda.is_available()); print('Device count:', torch.cuda.device_count())"
-
-# For TensorFlow
-python3 -c "import tensorflow as tf; print('GPU available:', tf.config.list_physical_devices('GPU'))"
-```
-
-### HPC Libraries - FIX
-
-Test common HPC libraries:
-
-```bash
-# Test rocBLAS (if installed)
-cd /opt/rocm/rocblas/bin
-./rocblas-bench -f gemm -r f32_r --transposeA N --transposeB N -m 1024 -n 1024 -k 1024
-```
-
-## Troubleshooting Common Issues
-
-If you encounter issues during validation:
-
-### 1. Verify User Permissions
-
-```bash
-# Check if user is in required groups
-groups | grep -E 'render|video'
-
-# Add user to groups if needed
-sudo usermod -a -G render,video $USER
-```
-
-### 2. Check ROCm Environment
-
-```bash
-# Verify environment variables
-echo $PATH | grep rocm
-echo $LD_LIBRARY_PATH | grep rocm
-```
-
-### 3. Examine System Logs
-
-```bash
-# Check for GPU-related messages
-dmesg | grep -i amdgpu
+# TensorFlow
+python3 -c "import tensorflow as tf; print('GPUs:', tf.config.list_physical_devices('GPU'))"
 ```
 
 ## Additional Resources
 
+- [AMD Instinct Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/)
 - [ROCm Validation Suite Documentation](https://rocm.docs.amd.com/projects/ROCmValidationSuite/en/latest/)
 - [ROCm Examples Repository](https://github.com/ROCm/rocm-examples)
+- [GPU Cluster Networking Guide](https://instinct.docs.amd.com/projects/gpu-cluster-networking/en/latest/)

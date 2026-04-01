@@ -2,127 +2,113 @@
 
 ## Introduction
 
-Selecting the right AMD Instinct GPU accelerator for your workload is a critical first step in your bare metal deployment journey. This guide will help you understand the available options and make an informed decision based on your specific requirements.
+Selecting the right AMD Instinct GPU accelerator is the first step in your bare metal deployment. This page provides a high-level overview of the current Instinct product lineup and key selection criteria. For detailed per-GPU specifications, validation requirements, and acceptance criteria, refer to the [AMD Instinct Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/).
 
-## AMD Instinct Product Families
+## AMD CDNA Architecture Overview
 
-AMD offers several generations of Instinct accelerators, each optimized for different types of workloads:
+All AMD Instinct GPUs are built on the AMD CDNA™ compute architecture. Current products span two generations:
 
-### Instinct MI300/MI325X Series
+| | CDNA 3 | CDNA 4 |
+|---|---|---|
+| **Process** | 5nm + 6nm FinFET | 3nm + 6nm FinFET |
+| **Products** | MI300 Series (MI300X, MI325X) | MI350 Series (MI350X, MI355X) |
+| **Memory** | Up to 256 GB HBM3E | Up to 288 GB HBM3E |
+| **Peak Bandwidth** | Up to ~6 TB/s | Up to 8 TB/s |
+| **Matrix data types** | INT8, FP8, BF16, FP16, TF32, FP32, FP64 | MXFP4, MXFP6, INT8, MXFP8, OCP FP8, BF16, FP16, TF32\*, FP32, FP64 |
+| **Sparsity** | INT8, FP8, BF16, FP16 | OCP FP8, INT8, FP16, BF16 |
 
-The MI300/MI325X series represents AMD's latest generation of accelerators, designed for the most demanding AI and HPC workloads.
+\* TF32 is supported by software emulation on CDNA 4.
 
-**MI325X**: AMD's flagship AI accelerator
+For a full architecture comparison across all CDNA generations, see the [AMD CDNA Architecture page](https://www.amd.com/en/technologies/cdna.html).
 
-- 256GB HBM3E memory with 6 TB/s memory bandwidth
-- Built on the AMD CDNA 3 architecture
-- Up to 1307 TFLOPS of half precision (FP16/BF16) performance
-- 2614 TFLOPS peak theoretical 8-bit precision (FP8)
-- Supports INT8, FP8, BF16, FP16, FP32, and FP64 precisions
-- OAM (OCP Accelerator Module) form factor
-- Platform configurations with up to 8 fully-connected accelerators
-- Ideal for: Foundation model training, large language models, generative AI, and memory-intensive workloads
+## Current Products
 
-**MI300X**: Previous generation dedicated GPU accelerator
+### CDNA 4: MI350 Series
 
-- 192GB HBM3 memory
-- 5.3 TB/s memory bandwidth
-- Optimized for AI inference and training
-- Ideal for: Large language models (LLMs), generative AI, and high-memory workloads
+AMD's latest compute architecture. CDNA 4 doubles the matrix compute throughput for low-precision data types compared to CDNA 3, and adds Microscaling (MX) format support (MXFP4, MXFP6, MXFP8) for greater flexibility in balancing model accuracy, speed, and power efficiency.
 
-### Instinct MI200 Series
+#### MI355X
 
-The MI200 series offers excellent performance for a wide range of HPC and AI workloads.
+- AMD CDNA 4 architecture
+- Highest memory capacity in the current Instinct lineup
+- Designed for the most demanding large-scale AI training, LLM inference, and memory-bound HPC
+- OAM form factor; up to 8 fully-connected accelerators per node
 
-**MI250X**: High-performance accelerator with dual-GPU design
+#### MI350X
 
-- 128GB HBM2e memory
-- Up to 383 TFLOPS half-precision (FP16)
-- Industry-leading FP64 performance for scientific computing
-- Ideal for: Traditional HPC, scientific simulations, and mixed-precision AI
+- AMD CDNA 4 architecture
+- High-throughput AI and HPC with large HBM3E memory capacity
+- Well-suited for generative AI, large model inference, and scientific computing
+- OAM form factor; up to 8 accelerators per node
 
-**MI250**: Cost-effective version of the MI250X
+### CDNA 3: MI300 Series
 
-- Similar architecture with slightly lower specifications
-- Good balance of performance and value
+AMD's previous generation, widely deployed across AI and HPC workloads. CDNA 3 introduced chiplet-based packaging, shared AMD Infinity Cache, and FP8 support for the Instinct product line.
 
-**MI210**: Entry-level option in the MI200 series
+#### MI325X
 
-- Designed for smaller workloads and development environments
-- Lower power requirements
+- AMD CDNA 3 architecture
+- 256 GB HBM3E memory, ~6 TB/s peak bandwidth
+- 1,216 Matrix Cores; supports INT8, FP8, BF16, FP16, TF32, FP32, FP64
+- OAM form factor
+
+#### MI300X
+
+- AMD CDNA 3 architecture
+- 192 GB HBM3 memory, ~5.3 TB/s peak bandwidth
+- Proven across many production AI and HPC deployments
+- OAM form factor
+
+For side-by-side specifications, performance benchmarks, and platform requirements for each GPU, see the [Customer Acceptance Guide GPU pages](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/).
+
+## Previous Generation
+
+AMD Instinct MI200 Series GPUs (MI250X, MI250, MI210) are built on CDNA 2 architecture and are not covered by the full acceptance workflow in the current acceptance guide, but remain supported under ROCm for existing deployments. If you are working with MI200 Series hardware, refer to the [AMD Instinct Documentation](https://instinct.docs.amd.com/latest/) for available guidance.
 
 ## Workload Considerations
 
-When selecting your Instinct GPU, consider these key factors:
+### Memory Capacity
 
-### Memory Requirements
+The large HBM memory footprint of the Instinct lineup is a key differentiator for AI and HPC work:
 
-- **Large AI Models**: For large language model training or inference, prioritize accelerators with the highest memory capacity (MI325X with 256GB)
-- **Multi-billion Parameter Models**: MI325X can fit larger models or more batch sizes in a single GPU
-- **HPC Simulations**: For memory-intensive scientific computing, MI325X offers the most HBM3E capacity
-- **Cost-sensitive Deployments**: MI300X or MI250X provide good memory capacity at different price points
+- **Large language models and generative AI**: Prioritize memory capacity — models with tens to hundreds of billions of parameters may require 192 GB or more to run efficiently at full precision or with larger batch sizes. MI355X and MI350X offer the highest capacity in the current lineup.
+- **HPC simulations**: Memory-bound scientific workloads benefit from high HBM bandwidth and capacity.
+- **Development and testing**: Any current-generation Instinct GPU is suitable; choose based on the production target you are developing toward.
 
-### Precision Needs
+### Precision and Data Types
 
-Different workloads require different numerical precision:
+CDNA 3 and CDNA 4 differ in their low-precision format support, which is relevant for inference optimization:
 
-- **AI Training and Inference**: Benefits from FP16, BF16, and FP8 (MI300 series)
-- **Scientific Computing**: May require FP64 double-precision (MI250X excels here)
-- **Mixed Precision**: Consider accelerators supporting multiple precision formats
+- **CDNA 4 (MI350 Series)** adds Microscaling (MX) formats — MXFP4, MXFP6, MXFP8 — enabling finer-grained quantization for LLM inference with lower memory and power cost. It also supports OCP FP8, BF16, FP16, FP32, and FP64.
+- **CDNA 3 (MI300 Series)** supports FP8, BF16, FP16, TF32, FP32, and FP64. Well-established software support across PyTorch, JAX, and inference frameworks.
 
-### Scale Requirements
+For scientific computing with strict FP64 requirements, both generations offer strong FP64 throughput — verify peak FP64 performance for your specific GPU against your workload's needs.
 
-- **Single-node**: All Instinct GPUs work well in single-node configurations
-- **Multi-node**: For large clusters, consider the Infinity Fabric connectivity options
-- **Specialized infrastructure**: Liquid cooling may be required for maximum performance
+### Scale
 
-## Deployment Considerations
+- **Single-node inference or development**: Any current-generation Instinct GPU works well.
+- **Multi-node training or large-scale HPC**: Plan your interconnect (InfiniBand, Ethernet, and AMD Infinity Fabric topology) alongside GPU selection — see the [GPU Cluster Networking Guide](https://instinct.docs.amd.com/projects/gpu-cluster-networking/en/latest/).
 
-### Power and Cooling
+## Platform and Infrastructure Requirements
 
-- MI325X: Up to 1000W per accelerator
-- MI300X: Up to 750W per accelerator
-- MI250X: Up to 560W per accelerator
-- Ensure your infrastructure can support the power and cooling requirements
-- Consider liquid cooling solutions for maximum performance, especially for MI325X platforms
+All current-generation Instinct OAM-form-factor GPUs share similar infrastructure requirements:
 
-### System Integration
-
-- Requires compatible server platforms with PCIe Gen 4/5 support
-- Consider OCP Accelerator Module (OAM) form factor requirements
-- Verify host CPU compatibility (AMD EPYC processors recommended)
-
-### Software Stack
-
-- All Instinct accelerators use the AMD ROCm™ software platform
-- Verify software compatibility with your application stack
-- Consider the level of software optimization available for your specific workloads
-
-## Choosing the Right Solution
-
-### For AI and Machine Learning
-
-- **Large model inference**: MI325X (highest memory capacity at 256GB)
-- **AI training**: MI325X for large models, MI250X for smaller models
-- **Generative AI**: MI325X (optimized for LLMs and diffusion models)
-- **Cost-sensitive AI**: MI300X or MI250X (balance of performance and value)
-
-### For HPC and Scientific Computing
-
-- **Double-precision workloads**: MI325X or MI250X (both offer excellent FP64 performance)
-- **Memory-bound simulations**: MI325X (largest memory capacity)
-- **Mixed workloads**: MI325X (versatile precision support from INT8 to FP64)
+- **Server platform**: OAM-compatible server chassis (typically 8 GPUs per node)
+- **CPU**: AMD EPYC processors recommended for optimal PCIe and NUMA topology; MI350 Series GPUs support PCIe 5
+- **Power and cooling**: High-density power delivery and liquid or high-flow air cooling required; refer to your server vendor's thermal design documentation
+- **Firmware and BIOS**: Specific firmware versions and BIOS settings are required before installing ROCm — see [System Prerequisites](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/common/prerequisites.html) in the acceptance guide
 
 ## Next Steps
 
-Once you've determined the appropriate hardware for your workload:
+Once you have identified the right GPU for your workload:
 
-- [Server Configuration Guide](../server-configuration)
-- [Installation and Setup](../installation-setup)
-- [Validation and Testing](../validation-testing)
+1. Review the [System Prerequisites](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/common/prerequisites.html) to ensure your server platform is correctly configured before installing software
+2. Proceed to [Installation](installation.md) to install ROCm
+3. Follow [Validation](validation.md) to confirm your system is operating correctly
 
 ## Additional Resources
 
-- [Detailed Specifications](https://www.amd.com/en/products/accelerators/instinct.html)
-- [Performance Benchmarks](https://www.amd.com/en/technologies/infinity-hub.html)
-- [ROCm Software Platform](https://www.amd.com/en/graphics/servers-solutions-rocm.html)
+- [AMD CDNA Architecture](https://www.amd.com/en/technologies/cdna.html) — Architecture overview, data type support, and whitepaper links for each generation
+- [AMD Instinct Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/) — Per-GPU validation workflows, specifications, and acceptance criteria
+- [AMD Instinct Documentation Hub](https://instinct.docs.amd.com/latest/) — Full documentation for Instinct products and software
+- [AMD Instinct Product Page](https://www.amd.com/en/products/accelerators/instinct.html) — Product family overview and datasheet links

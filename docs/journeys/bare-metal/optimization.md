@@ -11,10 +11,10 @@ Before focusing on application-specific optimizations, ensure your system is pro
 Proper BIOS settings are essential for optimal GPU performance:
 
 - Enable "Enhanced Preferred I/O" mode for EPYC processors
-- Configure NUMA settings appropriately (for most HPC workloads with EPYC 7003 series, NPS=4 is recommended)
+- Configure NUMA settings appropriately for your workload and processor generation
 - Disable power management features that can impact performance
 
-Refer to the [System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/index.html) for detailed BIOS settings based on your specific processor and Instinct GPU model.
+Refer to the [System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/index.html) for detailed BIOS settings based on your specific processor and Instinct GPU model. The [System Prerequisites](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/common/prerequisites.html) page in the Customer Acceptance Guide also covers required firmware and BIOS configuration per GPU platform.
 
 ### Operating System Tuning
 
@@ -25,35 +25,30 @@ Apply these OS-level optimizations:
 - Adjust kernel parameters for optimized I/O
 - Ensure up-to-date drivers and firmware
 
-For MI300X specific optimizations, refer to the [MI300X System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/mi300x.html).
+The [ROCm System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/index.html) includes GPU-specific pages (for example, [MI300X](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/mi300x.html)) — check that guide for the page corresponding to your GPU model.
 
 ## Performance Profiling
 
 Effective optimization starts with identifying bottlenecks through proper profiling.
 
-### Key Profiling Tools - UPDATE
+### Key Profiling Tools
 
 ROCm offers several profiling tools to analyze GPU performance:
 
-1. **ROCProfiler (rocprof)** - Command-line tool for collecting hardware metrics and API traces
-   - Lists performance counters
-   - Tracks kernel execution
-   - Monitors memory operations
+1. **ROCProfiler SDK (rocprofv3)** - Next-generation profiling toolkit
+   - Enhanced tracing capabilities
+   - Improved initialization performance
+   - Comprehensive API services
 
 2. **ROCm Compute Profiler** - GUI-based analysis tool built on ROCProfiler
    - Visualizes performance data
    - Provides guided bottleneck identification
    - Offers memory analysis capabilities
 
-3. **Omniperf** - Comprehensive system performance analyzer
-   - Automated counter collection
-   - High-level performance analysis features
-   - Support for baseline comparisons
-
-4. **ROCProfiler SDK (rocprofv3)** - Next-generation profiling toolkit
-   - Enhanced tracing capabilities
-   - Improved initialization performance
-   - Comprehensive API services
+3. **ROCProfiler (rocprof)** - Command-line tool for collecting hardware metrics and API traces
+   - Lists performance counters
+   - Tracks kernel execution
+   - Monitors memory operations
 
 Learn more about these tools in the [Profiling and Debugging Guide](https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/profiling-and-debugging.html).
 
@@ -74,9 +69,9 @@ Memory performance is often a critical factor in GPU computing performance.
    - Utilize shared memory effectively
 
 3. **Leverage HBM Capacity and Bandwidth**
-   - MI300X offers 192GB (MI325X: 256GB) HBM3 memory
-   - Take advantage of the high bandwidth (5.3+ TB/s)
-   - Structure algorithms to maximize bandwidth utilization
+   - CDNA 3 GPUs (MI300X, MI325X) offer 192–256 GB HBM3/HBM3E at up to ~6 TB/s
+   - CDNA 4 GPUs (MI350X, MI355X) offer up to 288 GB HBM3E at up to 8 TB/s
+   - Structure algorithms to maximize bandwidth utilization; high-bandwidth memory is the key advantage of the Instinct architecture
 
 4. **Memory Pool Management**
    - Use hip-extensions for memory allocations
@@ -100,13 +95,13 @@ Optimize computational aspects of your application for maximum performance.
    - Minimize control flow divergence
   
 3. **Precision Selection**
-   - Choose appropriate precision (FP64, FP32, FP16, BF16, FP8)
-   - Leverage Matrix Core acceleration
-   - Consider mixed-precision approaches
+   - CDNA 3 (MI300 Series): FP8, BF16, FP16, TF32, FP32, FP64 in Matrix Cores
+   - CDNA 4 (MI350 Series): adds MXFP4, MXFP6, MXFP8, and OCP FP8 for lower-precision inference with Microscaling support
+   - Lower precision reduces memory footprint and increases throughput; choose based on your accuracy requirements
 
 ### Workload-Specific Optimizations
 
-For detailed workload-specific optimization guidance, refer to the [MI300X Workload Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference-optimization/workload.html).
+For detailed workload-specific optimization guidance, refer to the [ROCm for AI — Inference Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference-optimization/workload.html).
 
 ## Domain-Specific Optimizations
 
@@ -118,11 +113,11 @@ For detailed workload-specific optimization guidance, refer to the [MI300X Workl
    - Consider vLLM for optimized inference
 
 2. **Model Optimization**
-   - Explore quantization (FP16, BF16, FP8)
+   - Explore quantization (FP16, BF16, FP8 on CDNA 3; additionally MXFP4/MXFP6/MXFP8 on CDNA 4)
    - Enable tensor parallelism for large models
-   - Utilize structure sparsity support
+   - Leverage sparsity support for additional inference throughput
 
-For detailed ML optimization techniques, refer to the [ROCm for AI Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/index.html).
+For detailed ML optimization techniques, refer to the [ROCm for AI Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/index.html). Note that vLLM, SGLang, and other inference frameworks have AMD-specific configuration options — consult each project's documentation for ROCm-specific guidance.
 
 ### High Performance Computing
 

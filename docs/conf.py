@@ -20,7 +20,7 @@ html_theme_options = {
     "flavor": "instinct",
     "link_main_doc": True,
 }
-#extensions = ["rocm_docs", "sphinx.ext.imgconverter", "rocm_docs.journey_line"]
+# extensions = ["rocm_docs", "sphinx.ext.imgconverter", "rocm_docs.journey_line"]
 extensions = ["rocm_docs", "sphinx.ext.imgconverter"]
 
 # Table of contents

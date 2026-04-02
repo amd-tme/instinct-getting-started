@@ -1,6 +1,6 @@
 # Validation
 
-This page provides a high-level overview of validation procedures for AMD Instinct accelerators on bare metal. The goal is to confirm that ROCm is installed and your GPUs are visible before moving on to formal acceptance testing.
+This page provides a high-level overview of validation procedures for AMD Instinct accelerators on bare metal. The goal is to confirm that ROCm is installed and your GPUs are operating correctly before running production workloads or formal acceptance testing.
 
 For comprehensive, production-grade validation — including BIOS prerequisites, health checks, benchmark baselines, and explicit pass/fail acceptance criteria — refer to the **[AMD Instinct Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/)**.
 
@@ -16,7 +16,7 @@ rocminfo
 amd-smi monitor
 ```
 
-If `rocminfo` lists your GPUs and `amd-smi monitor` shows them in a healthy state, ROCm is installed correctly and you can proceed to formal validation.
+If `rocminfo` lists your GPUs and `amd-smi monitor` shows them in a healthy state, ROCm is installed correctly and you can proceed to deeper validation.
 
 If GPUs are not detected, check:
 
@@ -40,9 +40,21 @@ If GPUs are not detected, check:
    echo $PATH | grep rocm
    ```
 
+## System Smoke Tests and Burn-in
+
+Once basic GPU visibility is confirmed, use the [ROCm Validation Suite (RVS)](https://rocm.docs.amd.com/projects/ROCmValidationSuite/en/latest/) to run more thorough system validation. RVS is a collection of tests and benchmarks targeting specific subsystems of the ROCm platform — GPU compute, memory, PCIe interconnects, and more.
+
+Common RVS use cases include:
+
+- **Smoke tests**: Quickly verify that GPU hardware and the ROCm stack are functioning correctly after installation or system changes.
+- **Burn-in testing**: Stress-test GPUs under sustained load to surface hardware issues before putting a system into production.
+- **Diagnostics**: Identify and isolate issues affecting GPU functionality or performance.
+
+See the [RVS documentation](https://rocm.docs.amd.com/projects/ROCmValidationSuite/en/latest/) and [GitHub repository](https://github.com/ROCm/ROCmValidationSuite) for installation instructions and available test modules.
+
 ## Formal Acceptance Testing
 
-For production deployments, passing the quick sanity check is only the beginning. The [Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/) provides a structured, two-phase validation methodology:
+For production deployments, passing the quick sanity check is only the beginning. The [Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/) provides a structured, two-phase validation methodology.
 
 ### Phase 1: Node (Single-System) Validation
 
@@ -69,13 +81,6 @@ After validating individual nodes, proceed with multi-node testing:
 
 Full details are in the [Cluster & Network Validation](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/#cluster-network-validation) section of the acceptance guide.
 
-## Cluster Validation Suite (CVS)
-
-Many of the node and cluster validation steps can be automated using the **Cluster Validation Suite (CVS)**, which verifies health and performance across multiple nodes without requiring extensive manual intervention.
-
-- [CVS Documentation](https://rocm.docs.amd.com/projects/cvs/en/latest/)
-- [CVS GitHub Repository](https://github.com/ROCm/cvs)
-
 ## Framework Smoke Tests
 
 Once the system is validated, a quick check that your target framework can see the GPUs is useful before moving on to workloads:
@@ -88,9 +93,22 @@ python3 -c "import torch; print('GPU count:', torch.cuda.device_count())"
 python3 -c "import tensorflow as tf; print('GPUs:', tf.config.list_physical_devices('GPU'))"
 ```
 
+## Workload Benchmarking
+
+After hardware and framework validation, benchmarking with real-world workloads confirms that end-to-end inference and training performance meets expectations.
+
+[MAD (Model Automation and Dashboarding)](https://github.com/ROCm/MAD) provides a library of production-representative AI model recipes for AMD Instinct GPUs, covering inference and training across common frameworks and architectures:
+
+- **LLM inference** with vLLM and SGLang (Llama, DeepSeek, Mistral, and others)
+- **LLM training** with PyTorch, Megatron-LM, and JAX MaxText
+- **Multimodal and vision** inference workloads
+
+MAD handles Docker image builds, model downloads, and performance result collection, making it straightforward to get representative benchmark numbers without building a custom test harness from scratch. See the [MAD repository](https://github.com/ROCm/MAD) for available model blueprints and usage instructions.
+
 ## Additional Resources
 
 - [AMD Instinct Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/)
 - [ROCm Validation Suite Documentation](https://rocm.docs.amd.com/projects/ROCmValidationSuite/en/latest/)
+- [MAD (Model Automation and Dashboarding)](https://github.com/ROCm/MAD)
 - [ROCm Examples Repository](https://github.com/ROCm/rocm-examples)
 - [GPU Cluster Networking Guide](https://instinct.docs.amd.com/projects/gpu-cluster-networking/en/latest/)

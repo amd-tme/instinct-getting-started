@@ -21,7 +21,7 @@ Full control over component selection; assemble your own stack from open source 
 
 | Layer | Components |
 |-------|------------|
-| **Inference engine** | [vLLM](https://docs.vllm.ai/) or [SGLang](https://sgl-project.github.io/) |
+| **Inference engine** | [vLLM](https://docs.vllm.ai/) or [SGLang](https://docs.sglang.io/) |
 | **Framework** | [PyTorch](https://pytorch.org/) + [Hugging Face](https://huggingface.co/docs/transformers/) |
 | **GPU software** | [ROCm Core SDK](../amd-components.md#rocm-core-sdk) |
 | **Infrastructure** | [AMD GPU Operator](https://instinct.docs.amd.com/projects/gpu-operator/en/latest/) on Kubernetes |

@@ -74,12 +74,6 @@ Currently, the ND MI300X v5 series is available in select Azure regions with pla
 ## Documentation and Resources
 
 - [Azure ND MI300X v5 Documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/ndmi300xv5-series)
-- [GPU Computing on Azure](https://azure.microsoft.com/en-us/solutions/gpu-computing/)
+- [GPU accelerated VM sizes](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/gpu-accelerated/nv-family)
 - [Azure AMD Partnership](https://azure.microsoft.com/en-us/partners/directory/amd-corporation/)
-- [ROCm on Azure Documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/hpc/rocm-installation)
-
-## Support
-
-- [Azure Support](https://azure.microsoft.com/en-us/support/options/)
-- [Azure Community Forums](https://learn.microsoft.com/en-us/answers/products/azure)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)
+- [Install AMD GPU drivers on Azure ND MI300X v5 Linux VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/azure-nd-mi300-series-amd-gpu-driver-linux-installation-guide)

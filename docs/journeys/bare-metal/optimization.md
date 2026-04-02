@@ -1,168 +1,107 @@
 # Optimization
 
-:::{card}
-:class-card: journey-progress
-[Hardware Selection](hardware-selection.md) → [Installation](installation.md) → [Environment Setup](environment-setup.md) → [Validation](validation.md) → **[Optimization](optimization.md)**
-:::
+This guide covers optimization approaches for AMD Instinct GPUs in a bare metal environment. Before applying optimizations, ensure your system is properly configured by completing the steps in [Environment Setup](environment-setup.md).
 
-This guide provides a high-level overview of optimization approaches for AMD Instinct accelerators in a single-node environment. For detailed, step-by-step instructions, refer to the linked official documentation.
+## System Configuration
 
-## System-Level Optimization
+Most performance issues on a fresh deployment trace back to default system settings that are not suited for GPU workloads. If you have not already done so, review the [Environment Setup](environment-setup.md) page — it covers the key changes, including:
 
-Before focusing on application-specific optimizations, ensure your system is properly configured for maximum performance.
+- **Disabling NUMA auto-balancing** — this is one of the most impactful single settings for GPU workload performance. Linux's automatic NUMA memory rebalancing can interfere with GPU memory locality and cause unpredictable slowdowns.
+- **Setting the CPU governor to `performance` mode** — prevents the CPU from throttling frequency during GPU-driven workloads.
+- **BIOS/firmware settings** — PCIe, NUMA, and power management settings that affect every workload on the system.
 
-### BIOS Configuration
-
-Proper BIOS settings are essential for optimal GPU performance:
-
-- Enable "Enhanced Preferred I/O" mode for EPYC processors
-- Configure NUMA settings appropriately (for most HPC workloads with EPYC 7003 series, NPS=4 is recommended)
-- Disable power management features that can impact performance
-
-Refer to the [System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/index.html) for detailed BIOS settings based on your specific processor and Instinct GPU model.
-
-### Operating System Tuning
-
-Apply these OS-level optimizations:
-
-- Set appropriate process scheduling policies
-- Configure huge pages for improved memory performance
-- Adjust kernel parameters for optimized I/O
-- Ensure up-to-date drivers and firmware
-
-For MI300X specific optimizations, refer to the [MI300X System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/mi300x.html).
+After completing those steps, review the [ROCm System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/index.html), which includes GPU-specific pages with verified settings for each platform (for example, [MI300X](https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/system-optimization/mi300x.html)). Also see the [ROCm prerequisite system validation guide](https://rocm.docs.amd.com/en/docs-7.2.1/how-to/rocm-for-ai/system-setup/prerequisite-system-validation.html) for recommended pre-workload validation steps, including performance determinism settings that can stabilize GPU clock behavior.
 
 ## Performance Profiling
 
-Effective optimization starts with identifying bottlenecks through proper profiling.
+Before making optimization changes, establish a baseline and use profiling tools to understand where time is actually being spent. A GPU workload can be slow for several different reasons — it might be waiting on data transfers, limited by compute throughput, or stalling on memory access — and the right fix depends on which problem is actually occurring. ROCm provides tools that address different stages of this process:
 
-### Key Profiling Tools - UPDATE
+1. **[ROCProfiler SDK (rocprofv3)](https://rocm.docs.amd.com/projects/rocprofiler-sdk/en/latest/)** — The recommended profiling tool for collecting GPU hardware metrics and API traces from the command line. Use this for automated or scripted profiling, or when you need to capture data about a specific kernel or time window.
 
-ROCm offers several profiling tools to analyze GPU performance:
+2. **[ROCm Compute Profiler](https://rocm.docs.amd.com/projects/rocm-compute-profiler/en/latest/)** — A guided analysis tool that categorizes bottlenecks and provides targeted recommendations. This is the best starting point if you've identified that a workload is slow but aren't sure why — it tells you whether the issue is compute, memory bandwidth, or something else, and suggests what to investigate next.
 
-1. **ROCProfiler (rocprof)** - Command-line tool for collecting hardware metrics and API traces
-   - Lists performance counters
-   - Tracks kernel execution
-   - Monitors memory operations
+3. **[ROCProfiler (rocprof)](https://rocm.docs.amd.com/projects/rocprofiler/en/latest/)** — The previous-generation command-line profiler. Listed here for users with existing tooling built against the older API; new projects should prefer rocprofv3.
 
-2. **ROCm Compute Profiler** - GUI-based analysis tool built on ROCProfiler
-   - Visualizes performance data
-   - Provides guided bottleneck identification
-   - Offers memory analysis capabilities
+For a practical walkthrough of applying these tools to AI inference workloads, see the [Profiling and Debugging Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference-optimization/profiling-and-debugging.html).
 
-3. **Omniperf** - Comprehensive system performance analyzer
-   - Automated counter collection
-   - High-level performance analysis features
-   - Support for baseline comparisons
+## Precision and Model Fit
 
-4. **ROCProfiler SDK (rocprofv3)** - Next-generation profiling toolkit
-   - Enhanced tracing capabilities
-   - Improved initialization performance
-   - Comprehensive API services
+For AI and LLM workloads, choosing the right numeric precision is often the highest-impact, lowest-effort optimization available. Precision affects how large a model can fit in GPU memory and how fast the hardware can process it:
 
-Learn more about these tools in the [Profiling and Debugging Guide](https://rocm.docs.amd.com/en/latest/how-to/llm-fine-tuning-optimization/profiling-and-debugging.html).
+- **Lower precision = less memory + higher throughput**: GPU hardware executes lower-precision math faster and with less memory. A model that doesn't fit at FP32 may fit at BF16, and may run significantly faster at FP8.
+- **BF16 is the recommended default** for most LLM inference workloads. It provides a strong balance of accuracy and performance with minimal configuration.
+- **FP8 provides additional throughput** on supported hardware where the accuracy trade-off is acceptable.
 
-## Memory Optimization
+Supported precision formats by GPU generation:
 
-Memory performance is often a critical factor in GPU computing performance.
+- **CDNA 3 (MI300 series)**: FP8, BF16, FP16, TF32, FP32, FP64 in Matrix Cores
+- **CDNA 4 (MI350 series)**: Adds MXFP4, MXFP6, MXFP8, and OCP FP8 with Microscaling support for additional compression
 
-### Key Memory Optimization Strategies
+As a concrete example: a 70B parameter model requires approximately 140 GB at BF16. This fits on a single MI300X (192 GB HBM) without requiring multi-GPU distribution.
 
-1. **Minimize Host-Device Transfers**
-   - Keep data on the GPU as long as possible
-   - Batch transfers when possible
-   - Use asynchronous memory operations
+## AI and Machine Learning Optimization
 
-2. **Optimize Memory Access Patterns**
-   - Ensure coalesced memory access
-   - Minimize bank conflicts
-   - Utilize shared memory effectively
+### Framework and Runtime Selection
 
-3. **Leverage HBM Capacity and Bandwidth**
-   - MI300X offers 192GB (MI325X: 256GB) HBM3 memory
-   - Take advantage of the high bandwidth (5.3+ TB/s)
-   - Structure algorithms to maximize bandwidth utilization
+- **Use ROCm-optimized [PyTorch](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/pytorch-install.html) or [TensorFlow](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/3rd-party/tensorflow-install.html)**: ROCm-specific framework builds include GPU kernels tuned for AMD hardware. Generic or CUDA-built packages either will not work on AMD GPUs or will fall back to slower, unoptimized code paths.
 
-4. **Memory Pool Management**
-   - Use hip-extensions for memory allocations
-   - Monitor memory fragmentation
-   - Implement proper cleanup procedures
+- **Use [vLLM](https://docs.vllm.ai/en/latest/) or [SGLang](https://docs.sglang.ai/) for LLM inference**: Serving a model with a simple loop processes one request at a time and leaves the GPU underutilized between requests. These inference frameworks implement continuous batching (handling multiple requests simultaneously) and memory-efficient attention, which together dramatically increase throughput. Both have official ROCm support — consult each project's documentation for AMD-specific configuration options.
 
-## Compute Optimization
+- **Leverage [Transformer Engine](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/transformer-engine.html) for mixed-precision training and inference**: Transformer Engine automates FP8 mixed-precision by applying lower precision in performance-critical operations and maintaining higher precision where accuracy requires it, without requiring manual changes throughout a model.
 
-Optimize computational aspects of your application for maximum performance.
+### Model Optimization
 
-### Kernel Optimization
+- **Quantization**: Reducing weight precision from FP32 to BF16 or FP8 reduces memory usage and increases throughput. This is typically the first optimization to try for LLM serving.
+- **Tensor parallelism**: For models that don't fit on a single GPU even at reduced precision, tensor parallelism distributes computation across multiple GPUs so all participate in each step. This tends to provide lower latency than pipeline parallelism for inference workloads.
 
-1. **Occupancy Optimization**
-   - Balance registers per thread
-   - Tune thread block dimensions
-   - Optimize shared memory usage
+For a comprehensive overview, refer to the [ROCm for AI Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/index.html).
 
-2. **Instruction Mix**
-   - Utilize specialized instructions
-   - Balance ALU vs. memory operations
-   - Minimize control flow divergence
-  
-3. **Precision Selection**
-   - Choose appropriate precision (FP64, FP32, FP16, BF16, FP8)
-   - Leverage Matrix Core acceleration
-   - Consider mixed-precision approaches
+## High Performance Computing
 
-### Workload-Specific Optimizations
+### GPU-Aware MPI
 
-For detailed workload-specific optimization guidance, refer to the [MI300X Workload Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference-optimization/workload.html).
+Standard MPI copies GPU data through host RAM before sending it over the network. GPU-aware MPI (combined with RDMA-capable networking) reads and writes GPU memory directly, eliminating that intermediate copy and reducing inter-node communication overhead. See the [GPU-aware MPI with ROCm Guide](https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-gpu-aware-mpi-readme/) for configuration details.
 
-## Domain-Specific Optimizations
+### Optimized Math Libraries
 
-### AI and Machine Learning
+AMD provides GPU-accelerated math libraries tuned for Instinct hardware. Using these ensures that common operations — matrix multiplications, FFTs, random number generation — run with hardware-optimized kernels rather than generic implementations:
 
-1. **Framework Optimization**
-   - Use ROCm-optimized PyTorch/TensorFlow
-   - Leverage Transformer Engine for LLMs
-   - Consider vLLM for optimized inference
+- **[rocBLAS](https://rocm.docs.amd.com/projects/rocBLAS/en/latest/)**: GPU-accelerated BLAS routines (GEMM, etc.) optimized for AMD Matrix Cores
+- **[rocRAND](https://rocm.docs.amd.com/projects/rocRAND/en/latest/)**: GPU-accelerated random number generation, which keeps data in GPU memory and avoids unnecessary transfers to and from the CPU
 
-2. **Model Optimization**
-   - Explore quantization (FP16, BF16, FP8)
-   - Enable tensor parallelism for large models
-   - Utilize structure sparsity support
+## Monitoring and Verification
 
-For detailed ML optimization techniques, refer to the [ROCm for AI Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/index.html).
+### Real-Time GPU Monitoring
 
-### High Performance Computing
+[AMD-smi](https://rocm.docs.amd.com/projects/amdsmi/en/latest/) provides real-time GPU telemetry. The basic commands are covered in [Environment Setup](environment-setup.md#gpu-monitoring); from an optimization perspective, the key metrics to watch during a running workload are:
 
-1. **Communication Optimization**
-   - Configure GPU-aware MPI correctly
-   - Optimize collective operations
-   - Tune RDMA settings
+```bash
+# Monitor GPU utilization, memory usage, power, and temperature
+amd-smi monitor --watch --interval 1000
+```
 
-2. **Math Library Selection**
-   - Use optimized libraries (rocBLAS, rocRAND, etc.)
-   - Leverage highly-tuned algorithmic implementations
-   - Consider architecture-specific math routines
+- **GPU utilization**: Consistently low utilization on a running workload often means the GPU is waiting on data or CPU-side operations, not executing compute.
+- **Memory bandwidth**: For memory-intensive workloads (such as LLM inference), high bandwidth utilization is expected. Significant headroom indicates the workload may not be structured to fully use available memory bandwidth.
+- **Power and temperature**: Unexpected throttling due to thermal or power limits can silently reduce performance. Watch for sustained operation at or above thermal limits.
 
-For more on HPC optimization, see the [GPU-aware MPI with ROCm Guide](https://gpuopen.com/learn/amd-lab-notes/amd-lab-notes-gpu-aware-mpi-readme/).
+### Prometheus Metrics
 
-## Optimization Verification
+For continuous monitoring across a fleet of systems, the [AMD Device Metrics Exporter](https://github.com/ROCm/device-metrics-exporter) provides Prometheus-compatible GPU metrics. This allows AMD-smi telemetry to be scraped by Prometheus and visualized in tools like Grafana — useful for tracking GPU health, utilization, and performance trends over time.
 
-After implementing optimizations, verify the results:
+### Iterative Optimization
 
-1. **Benchmark Comparison**
-   - Compare performance before and after optimizations
-   - Use standard benchmarks relevant to your workload
-   - Examine scaling characteristics
+Optimization is rarely a one-time task. Fixing one bottleneck typically reveals the next:
 
-2. **Profiling Validation**
-   - Confirm bottlenecks have been addressed
-   - Identify any new performance limiters
-   - Measure key metrics improvement
+1. Profile to identify the current bottleneck
+2. Make one targeted change
+3. Measure the result against your baseline
+4. Repeat
 
-3. **Performance Monitoring**
-   - Use rocm-smi or AMD-smi for real-time monitoring
-   - Track thermal and power characteristics
-   - Monitor memory usage patterns
+For detailed guidance on applying this process to inference workloads, see the [Profiling and Debugging Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference-optimization/profiling-and-debugging.html).
 
 ## Additional Resources
 
 - [ROCm Documentation Home](https://rocm.docs.amd.com/)
+- [ROCm System Optimization Guide](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/index.html)
+- [ROCm for AI Guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/index.html)
 - [AMD ROCm Blogs](https://rocm.blogs.amd.com/)

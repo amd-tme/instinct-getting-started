@@ -58,14 +58,11 @@ Oracle offers a "try-before-you-buy" program for OCI Compute with AMD Instinct M
 
 - [OCI GPU Computing](https://www.oracle.com/cloud/compute/gpu/)
 - [OCI Compute Documentation](https://docs.oracle.com/en-us/iaas/Content/Compute/Concepts/computeoverview.htm)
-- [AMD Instinct MI300X on OCI](https://www.oracle.com/cloud/compute/gpu/amd/)
-- [OCI ROCm Developer Guide](https://docs.oracle.com/en-us/iaas/Content/Compute/References/rocm.htm)
+- [General Availability of OCI Compute with AMD Instinct MI355X GPUs](https://blogs.oracle.com/cloud-infrastructure/announcing-general-availability-of-oci-amd-mi355x)
 
 ## Support
 
-- [OCI Support](https://www.oracle.com/cloud/support/)
-- [OCI Forums](https://community.oracle.com/tech/developers/categories/oci)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)
+- [OCI Support](https://support.oracle.com/)
 
 ## Pricing and Availability
 

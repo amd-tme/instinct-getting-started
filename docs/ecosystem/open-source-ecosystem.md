@@ -24,10 +24,10 @@ ROCm without vendor lock-in.
 | Component | Role | Notes |
 |-----------|------|-------|
 | [vLLM](https://docs.vllm.ai/) | High-throughput LLM serving | PagedAttention, continuous batching; validated on MI300X/MI325X — [ROCm guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference/benchmark-docker/vllm.html) |
-| [SGLang](https://sgl-project.github.io/) | Efficient LLM/VLM serving | RadixAttention, optimized for AMD GPUs — [ROCm guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference/benchmark-docker/sglang.html) |
+| [SGLang](https://docs.sglang.io/) | Efficient LLM/VLM serving | RadixAttention, optimized for AMD GPUs — [ROCm guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference/benchmark-docker/sglang.html) |
 | [Triton Inference Server](https://github.com/triton-inference-server/server) | Multi-framework model serving | Supports concurrent model execution |
 | [TGI (Text Generation Inference)](https://huggingface.co/docs/text-generation-inference/) | Hugging Face inference server | ROCm-compatible containers available — [ROCm guide](https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/inference/llm-inference-frameworks.html) |
-| [llama.cpp](https://github.com/ggerganov/llama.cpp) | Lightweight CPU/GPU inference | hipBLAS backend for AMD GPUs |
+| [llama.cpp](https://github.com/ggml-org/llama.cpp) | Lightweight CPU/GPU inference | hipBLAS backend for AMD GPUs |
 
 ## Training and optimization
 

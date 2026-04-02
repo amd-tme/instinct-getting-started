@@ -1,13 +1,10 @@
 # Overview
 
-:::{card}
-:class-card: journey-progress
-[Hardware Selection](hardware-selection.md) → [Installation](installation.md) → [Environment Setup](environment-setup.md) → [Validation](validation.md) → [Optimization](optimization.md)
-:::
-
 ## Getting Started with Direct Hardware Deployment
 
-The Bare Metal journey provides a comprehensive path for deploying AMD Instinct accelerators directly on your hardware infrastructure. Whether you're setting up a development workstation, building an AI inference server, or constructing a high-performance computing cluster, this guide will walk you through the essential steps from hardware selection to performance optimization.
+The Bare Metal journey provides a path for deploying AMD Instinct accelerators directly on your hardware infrastructure. Whether you're setting up a development workstation, building an AI inference server, or constructing a high-performance computing cluster, this guide walks you through the essential steps from hardware selection to performance optimization.
+
+For production deployments, the **[AMD Instinct Customer Acceptance Guide](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/)** provides comprehensive validation workflows and acceptance criteria for MI300X through MI355X platforms.
 
 ## When to Choose Bare Metal Deployment
 
@@ -19,30 +16,26 @@ The Bare Metal journey is ideal for users who:
 - Want to integrate AMD Instinct accelerators into existing systems
 - Are building specialized HPC or AI infrastructure
 
-If you're looking for a more managed deployment option with reduced setup complexity, consider exploring our [Cloud Deployment Journey](../cloud-journey/) instead.
+If you're looking for a more managed deployment option with reduced setup complexity, consider exploring our [Cloud Deployment Journey](../cloud/index.md) instead.
 
 Let's begin your journey with [Hardware Selection](hardware-selection/).
 
-## Your Journey Path
-
-![Bare Metal Journey Path](_static/images/bare_metal.png)
-
 ### [1. Hardware Selection](hardware-selection/)
 
-Begin your journey by selecting the right AMD Instinct GPU for your specific workload requirements. This section guides you through the available Instinct product families, helping you understand key considerations like memory capacity, computational capabilities, and infrastructure requirements. Whether you're focused on AI training, inference, or scientific computing, you'll learn how to choose the optimal hardware configuration.
+Review the current AMD Instinct GPU lineup — from MI300X through MI355X — and understand key selection criteria including memory capacity, supported precision formats, and platform requirements. Links to per-GPU specifications and the Customer Acceptance Guide are provided for deeper technical detail.
 
 ### [2. Installation and Setup](installation/)
 
-Once you've selected your hardware, this section walks you through the process of installing the ROCm software stack and configuring your system. You'll learn about different installation approaches, from quick-start methods to advanced configuration options. By the end of this section, you'll have your AMD Instinct GPU properly installed and ready for environment configuration.
+Install the ROCm software stack using the recommended AMDGPU installer. This section also points you to the system prerequisites you should complete — BIOS settings, firmware alignment, and OS configuration — before installing ROCm.
 
 ### [3. Environment Setup](environment-setup/)
 
-After installing the ROCm software stack, proper environment configuration is essential for optimal GPU performance. This section guides you through configuring environment variables, system-level optimizations, container environments, and framework integration. You'll learn how to set up your development environment and configure multi-GPU systems for maximum performance.
+Configure your environment for reliable GPU operation: kernel parameters, ROCm environment variables, GPU monitoring, container access, and multi-GPU topology. Pointers to the ROCm System Optimization Guide are included for deeper configuration guidance.
 
 ### [4. Validation and Testing](validation/)
 
-Before running production workloads, it's essential to verify that your system is functioning correctly. This section covers basic system validation, software stack verification, and performance testing. You'll learn how to use various diagnostic tools to confirm your Instinct GPU is operating as expected and delivering the anticipated performance.
+Confirm your system is operating correctly with a quick sanity check, then move on to the formal per-GPU acceptance workflow using AMD GPU Field Health Check (AGFHC) and the Cluster Validation Suite (CVS). Links to per-GPU pages in the Customer Acceptance Guide are provided.
 
 ### [5. Performance Optimization](optimization/)
 
-The final step in your journey focuses on maximizing the performance of your AMD Instinct accelerators. This section introduces profiling tools and optimization techniques for both system-level and application-specific tuning. You'll discover how to identify bottlenecks and implement targeted optimizations to achieve peak performance for your specific workloads.
+Understand the key levers for GPU performance: system-level BIOS and OS tuning, ROCm profiling tools (ROCm Compute Profiler, rocprofv3), memory optimization strategies, and framework-specific tuning for AI and HPC workloads.

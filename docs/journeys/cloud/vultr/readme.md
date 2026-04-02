@@ -1,4 +1,4 @@
-Vultr AMD Instinct GPU Offerings
+# Vultr
 
 ## Overview
 
@@ -61,7 +61,6 @@ Vultr uses Single Root I/O Virtualization (SR-IOV) based GPU partitioning, offer
 
 ## Documentation and Resources
 
-- [Vultr Cloud GPU Documentation](https://www.vultr.com/docs/gpu/)
 - [Vultr Cloud GPU Pricing](https://www.vultr.com/pricing/#cloud-gpu)
 - [AMD ROCm Documentation](https://rocm.docs.amd.com/)
 - [AMD-Vultr Partnership](https://www.vultr.com/cloudalliance/amd/)
@@ -69,5 +68,4 @@ Vultr uses Single Root I/O Virtualization (SR-IOV) based GPU partitioning, offer
 ## Support
 
 - [Vultr Support](https://www.vultr.com/support/)
-- [Vultr Knowledge Base](https://www.vultr.com/docs/)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)
+- [Vultr Knowledge Base](https://docs.vultr.com/)

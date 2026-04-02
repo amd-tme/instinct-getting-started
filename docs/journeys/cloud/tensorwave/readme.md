@@ -1,4 +1,4 @@
-TensorWave AMD Instinct GPU Offerings
+# TensorWave
 
 ## Overview
 
@@ -29,9 +29,28 @@ TensorWave is deploying AMD Instinct MI325X GPUs as part of their expansion:
 - **Bandwidth**: 8 TB/s memory bandwidth
 - **Cluster Size**: Building an 8,192 Instinct MI325X GPU cluster
 
-### Future Expansion: AMD Instinct MI350X Series
+### AMD Instinct MI355X
 
-TensorWave has announced plans to deploy AMD's next-generation MI350X series as they become available, aiming to build one of the world's largest AMD GPU clusters.
+TensorWave offers AMD Instinct MI355X accelerators — AMD's latest CDNA 4-generation GPUs with 288 GB HBM3E memory:
+
+**Specifications:**
+
+- **GPU**: AMD Instinct MI355X
+- **Memory**: 288 GB HBM3E per GPU
+- **Architecture**: AMD CDNA 4
+- **Pricing**: Starting at $2.95/GPU-hr (dedicated bare metal)
+
+## Pricing
+
+| GPU | Pricing Model | Starting Price |
+|---|---|---|
+| MI355X | Dedicated bare metal | $2.95/GPU-hr |
+| MI325X | Dedicated bare metal | $2.25/GPU-hr |
+| MI300X | Dedicated bare metal | $1.71/GPU-hr |
+| Enterprise Cluster | Custom pricing | Contact sales |
+| Storage (Weka) | Custom pricing | Contact sales |
+
+All bare metal plans include guaranteed availability and full root access. Volume discounts are available for longer commitments.
 
 ## Getting Started with TensorWave
 
@@ -64,11 +83,9 @@ TensorWave participates in the AMD Instinct GPU Evaluation Program. Visit the [A
 
 - [TensorWave Platform](https://tensorwave.com/)
 - [TensorWave AI GPU Cloud Guide](https://tensorwave.com/blog/ai-gpu-cloud)
-- [AMD ROCm Documentation](https://rocm.docs.amd.com/)
-- [TensorWave GitHub Examples](https://github.com/tensorwave-ai)
 
 ## Support
 
 - [TensorWave Support](https://tensorwave.com/support/)
 - [TensorWave Documentation](https://docs.tensorwave.com/)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)
+- [ROCm GitHub Discussions](https://github.com/ROCm/ROCm/discussions)

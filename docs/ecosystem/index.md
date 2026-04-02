@@ -60,4 +60,4 @@ examples showing how these layers compose for specific use cases.
 | [Instinct Documentation](https://instinct.docs.amd.com/latest/index.html) | GPU drivers, GPU Operator, K8s infrastructure, metrics |
 | [Enterprise AI Suite](https://enterprise-ai.docs.amd.com/en/latest/platform-overview.html) | AI Workbench, Resource Manager, Inference Microservices |
 | [Developer Hub](https://www.amd.com/en/developer/resources/rocm-hub/dev-ai.html) | Tutorials, ecosystem partners, getting started resources |
-| [ROCm Compatibility Matrix](https://rocm.docs.amd.com/en/compatibility/compatibility-matrix.html) | Supported GPUs, OS versions, framework versions |
+| [ROCm Compatibility Matrix](https://rocm.docs.amd.com/en/latest/compatibility/compatibility-matrix.html) | Supported GPUs, OS versions, framework versions |

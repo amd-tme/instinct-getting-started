@@ -79,4 +79,3 @@ Hot Aisle participates in the AMD Instinct GPU Evaluation Program. Visit the [AM
 
 - [Hot Aisle Support](https://hotaisle.xyz/support/)
 - [Hot Aisle Consulting Services](https://hotaisle.xyz/consulting/)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)

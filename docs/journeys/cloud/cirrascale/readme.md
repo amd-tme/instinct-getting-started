@@ -30,12 +30,22 @@ Currently available through the Cirrascale AI Innovation Cloud:
 - **Network**: 25Gb bonded connection (3200Gb available)
 - **GPU Memory**: 192GB HBM3 per GPU (1.5TB total)
 
-### Upcoming: AMD Instinct MI325X and MI350 Series
+### AMD Instinct MI325X
+
+Now available in the Cirrascale AI Innovation Cloud:
+
+**Specifications:**
+
+- **GPU**: AMD Instinct MI325X accelerators
+- **Memory**: 256 GB HBM3E per GPU with 8 TB/s memory bandwidth
+- **Architecture**: 3rd Gen AMD CDNA (CDNA 3)
+- **Features**: Superior FP16, BF16, FP8, and INT8 processing for leading GenAI models
+
+### Upcoming: AMD Instinct MI350 Series
 
 Cirrascale has announced the upcoming availability of:
 
-- **AMD Instinct MI325X**: 256GB HBM3E memory with advanced FP16 and FP8 processing
-- **AMD Instinct MI350 Series**: Built on 4th generation AMD CDNA architecture with up to 288GB HBM3E memory
+- **AMD Instinct MI350 Series**: Built on 4th generation AMD CDNA architecture with up to 288 GB HBM3E memory
 
 ## Getting Started with Cirrascale AMD Instinct GPUs
 
@@ -94,5 +104,3 @@ Cirrascale participates in the AMD Instinct GPU Evaluation Program, allowing pot
 ## Support
 
 - [Cirrascale Support](https://www.cirrascale.com/support/)
-- [Cirrascale Knowledge Base](https://www.cirrascale.com/resources/)
-- [AMD ROCm Community](https://www.amd.com/en/developer/resources/rocm-hub/forums.html)

@@ -129,9 +129,9 @@ management, orchestration, and serving layers above ROCm.
 
 | Component | Description |
 |-----------|-------------|
-| [AMD AI Resource Manager](https://enterprise-ai.docs.amd.com/en/resource-manager/overview.html) | Multi-tenant GPU resource orchestration, quotas, and project isolation |
-| [AMD AI Workbench](https://enterprise-ai.docs.amd.com/en/workbench/overview.html) | Development environment for fine-tuning, evaluation, and experimentation |
-| [AMD Inference Microservices (AIM)](https://enterprise-ai.docs.amd.com/en/workbench/inference/overview.html) | Pre-packaged, optimized inference containers for serving LLMs on Instinct GPUs |
+| [AMD AI Resource Manager](https://enterprise-ai.docs.amd.com/en/latest/resource-manager/overview.html) | Multi-tenant GPU resource orchestration, quotas, and project isolation |
+| [AMD AI Workbench](https://enterprise-ai.docs.amd.com/en/latest/workbench/overview.html) | Development environment for fine-tuning, evaluation, and experimentation |
+| [AMD Inference Microservices (AIM)](https://enterprise-ai.docs.amd.com/en/latest/aims/overview.html) | Pre-packaged, optimized inference containers for serving LLMs on Instinct GPUs |
 | **AI-Native Workload Orchestration** | Intelligent job scheduling and dynamic resource allocation |
 | **Solution Blueprints** | Pre-validated deployment patterns and example architectures |
 

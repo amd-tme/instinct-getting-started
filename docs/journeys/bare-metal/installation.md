@@ -1,44 +1,38 @@
 # Installation
 
-:::{card}
-:class-card: journey-progress
-[Hardware Selection](hardware-selection.md) → **[Installation](installation.md)** → [Validation](validation.md) → [Optimization](optimization.md)
-:::
+This page provides a high-level overview of the ROCm installation process for AMD Instinct accelerators on bare metal. For detailed step-by-step instructions, refer to the [official ROCm documentation](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/index.html).
 
-This guide provides a high-level overview of the installation process for AMD Instinct accelerators. For detailed, step-by-step instructions, please refer to the [official ROCm documentation](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/index.html).
+## Before You Install: System Prerequisites
 
-## Prerequisites
+ROCm installation assumes your server is already correctly configured at the hardware and OS level. If you are preparing a new system — or validating an existing one for production — review the system prerequisites before proceeding:
 
-Before beginning installation, ensure your system meets the following requirements:
+- **[System Prerequisites](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/common/prerequisites.html)** (AMD Instinct Customer Acceptance Guide) — covers supported OS versions, required firmware and BIOS settings, GRUB kernel parameters, and foundational OS tuning. Getting these right before installing ROCm avoids difficult-to-diagnose issues later.
 
-### System Requirements
+## Supported Operating Systems
 
-- **Supported Operating Systems**:
-  - Ubuntu 20.04, 22.04, or 24.04
-  - Red Hat Enterprise Linux (RHEL) 8.x or 9.x
-  - SUSE Linux Enterprise Server (SLES) 15.x
-  
-- **Kernel Requirements**: Check your kernel version with `uname -srmv` and ensure it matches the requirements in the [ROCm system requirements documentation](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html).
+- Ubuntu 22.04, 24.04
+- Red Hat Enterprise Linux (RHEL) 8.x or 9.x
+- SUSE Linux Enterprise Server (SLES) 15.x
 
-### Pre-Installation Steps
+Verify the exact kernel and OS version requirements for your ROCm release in the [ROCm system requirements documentation](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html).
 
-**Verify System Compatibility**:
+## Pre-Installation Steps
+
+**Verify OS and architecture:**
 
 ```bash
 uname -m && cat /etc/*release
 uname -srmv
 ```
 
-**Ensure User Group Membership**:
-
-Add your user to the necessary groups for GPU access:
+**Ensure user group membership** (required for GPU device access):
 
 ```bash
 sudo usermod -a -G render,video $LOGNAME
+# Log out and back in for group changes to take effect
 ```
 
-**Install Required Packages**:
-Depending on your distribution, install prerequisite packages:
+**Install prerequisite packages:**
 
 For Ubuntu:
 
@@ -54,85 +48,61 @@ sudo dnf install python3-setuptools python3-wheel
 
 ## Installation Methods
 
-ROCm offers multiple installation approaches. Choose the one that best fits your needs:
+ROCm offers multiple installation approaches. The AMDGPU installer is recommended for most users.
 
-### 1. Quick Start Method (Recommended for New Users)
+### Recommended: AMDGPU Installer
 
-The quickest way to install ROCm is using the AMDGPU installer:
+The `amdgpu-install` script handles driver and ROCm package installation in a single step.
 
-**Download and Install the AMDGPU Installer**:
-
-For Ubuntu (adjust version as needed):
+**Ubuntu:**
 
 ```bash
+sudo apt update
 wget https://repo.radeon.com/amdgpu-install/latest/ubuntu/jammy/amdgpu-install_latest_all.deb
 sudo apt install ./amdgpu-install_latest_all.deb
 sudo apt update
+sudo amdgpu-install --usecase=rocm
 ```
 
-**Install ROCm**:
+**RHEL:**
 
 ```bash
-sudo apt install rocm
+sudo dnf install https://repo.radeon.com/amdgpu-install/latest/rhel/$(. /etc/os-release; echo $VERSION_ID)/amdgpu-install*.rpm
+sudo amdgpu-install --usecase=rocm
 ```
 
-**Reboot Your System**:
+After installation, reboot your system:
 
- ```bash
- sudo reboot
- ```
+```bash
+sudo reboot
+```
 
-For detailed quick start instructions for your specific OS, refer to the [ROCm Quick Start Guide](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/quick-start.html).
+For the full quick-start guide, see [ROCm Quick Start](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/quick-start.html).
 
-### 2. Package Manager Method (Advanced)
+### Package Manager Method
 
-For more control over the installation process, you can use your distribution's package manager directly:
+For more control over the installation, you can add AMD repositories and install packages directly with your distribution's package manager. See the [ROCm Detailed Installation Guide](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/install-overview.html).
 
-**Add GPG Key and Repositories**:
-   Set up the necessary repositories for your specific distribution.
+### Alternative Methods
 
-**Install Kernel Driver**:
-
- ```bash
- sudo apt install amdgpu-dkms    # For Ubuntu
- sudo dnf install amdgpu-dkms    # For RHEL
- ```
-
-**Install ROCm Packages**:
-
- ```bash
- sudo apt install rocm    # For Ubuntu
- sudo dnf install rocm    # For RHEL
- ```
-
-For detailed instructions, refer to the [ROCm Detailed Installation Guide](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/index.html).
-
-### 3. Alternative Installation Methods
-
-ROCm also offers:
-
-- **Multi-version Installation**: For running multiple ROCm versions side-by-side
-- **Offline Installation**: For systems without internet access
-- **Runfile Installation**: For systems without a package manager
-
-See [ROCm Installation Overview](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/install-overview.html) for more information.
+ROCm also supports multi-version installations, offline installations, and runfile-based installation for environments without a package manager. See the [ROCm Installation Overview](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/install/install-overview.html).
 
 ## Post-Installation Verification
 
-After installation, verify your setup:
-
-**Verify ROCm Installation**:
+After rebooting, run a quick check to confirm ROCm and your GPUs are visible:
 
 ```bash
+# Full ROCm system report including GPU detection
 /opt/rocm/bin/rocminfo
-```
 
-**Check GPU Detection**:
-
-```bash
+# GPU status monitoring
 /opt/rocm/bin/amd-smi monitor
 ```
+
+If your GPUs appear in both outputs, proceed to [Validation](validation.md) for more thorough testing.
 
 ## Additional Resources
 
 - [ROCm Documentation Home](https://rocm.docs.amd.com/)
+- [ROCm Installation on Linux](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/)
+- [AMD Instinct Customer Acceptance Guide — System Prerequisites](https://instinct.docs.amd.com/projects/system-acceptance/en/latest/common/prerequisites.html)

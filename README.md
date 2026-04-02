@@ -56,46 +56,63 @@ We welcome contributions to improve this documentation. Please see our contribut
 
 ## Documentation Build Guide
 
-This guide provides information for developers who want to contribute to the Instinct Docs site. The docs use [rocm-docs-core](https://github.com/ROCm/rocm-docs-core) as their base and the below guide will show how you can build and serve the docs locally for testing.
+This guide is for contributors who want to build or check the docs locally. The docs use [rocm-docs-core](https://github.com/ROCm/rocm-docs-core) as their base. A `Makefile` wraps all common tasks — run `make help` for a full target listing.
 
-### Building and Serving the Docs
+### Setup
 
-Create a Python Virtual Environment (optional, but recommended):
+Create and activate a Python virtual environment (recommended):
 
 ```bash
 python3 -m venv .venv/docs
+source .venv/docs/bin/activate      # Linux/macOS
+# source .venv/docs/Scripts/activate  # Git Bash on Windows
+# .venv\docs\Scripts\activate         # Command Prompt on Windows
 ```
 
-Activate the Virtual Environment:
-
-```bash
-source .venv/docs/bin/activate # Unix-like OS
-```
-
-```bash
-source .venv/docs/Scripts/activate # Git Bash on Windows
-```
-
-```bash
-.venv\docs\Scripts\activate # Command Prompt on Windows
-```
-
-Install required packages for docs:
+Install required packages:
 
 ```bash
 pip install -r docs/sphinx/requirements.txt
 ```
 
-Build the docs:
+### Build
+
+| Command | Output |
+|---|---|
+| `make html` | HTML site → `docs/_build/html/` |
+| `make htmlzip` | HTML + zip archive → `docs/_build/htmlzip/` |
+| `make pdf` | PDF via LaTeX + latexmk → `docs/_build/latex/` |
+| `make epub` | EPUB → `docs/_build/epub/` |
+| `make docx` | DOCX via pandoc → `docs/_build/docx/` |
+| `make all` | All of the above |
+
+Open `docs/_build/html/index.html` in a browser to preview, or serve locally:
 
 ```bash
-python3 -m sphinx -b html -d _build/doctrees -D language=en ./docs/ docs/_build/html
+python3 -m http.server -d docs/_build/html/
 ```
 
-Serve docs locally on port 8000:
+Then visit <http://localhost:8000>.
+
+To treat Sphinx warnings as errors (CI-style):
 
 ```bash
-python3 -m http.server -d ./docs/_build/html/
+make html SPHINXOPTS="-W --keep-going"
 ```
 
-You can now view the docs site by going to <http://localhost:8000>
+### Lint and Spellcheck
+
+| Command | What it does |
+|---|---|
+| `make lint` | Run `markdownlint` against all `docs/**/*.md` files |
+| `make lint-fix` | Auto-fix markdownlint issues where possible |
+| `make spellcheck` | Run `pyspelling` using `.spellcheck.yaml` |
+| `make linkcheck` | Check all external links for validity |
+
+### Clean
+
+```bash
+make clean
+```
+
+Removes the `docs/_build/` directory.

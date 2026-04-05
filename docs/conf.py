@@ -2,7 +2,10 @@
 
 import os
 
-html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "instinct.docs.amd.com")
+html_baseurl = os.environ.get(
+    "READTHEDOCS_CANONICAL_URL",
+    os.environ.get("DOCS_BASE_URL", "/")
+)
 html_context = {}
 if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True

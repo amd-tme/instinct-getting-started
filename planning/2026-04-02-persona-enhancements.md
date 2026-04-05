@@ -15,7 +15,8 @@ The journeys are solid for "how do I get GPU access" but stop short of "now what
 
 Here's what the documented journeys look like, for reference when we add these to the site:
 
-**Bare Metal Journey**
+### Bare Metal Journey
+
 ```mermaid
 flowchart LR
     A([Start]) --> B[Hardware Selection\nMI300X–MI355X]
@@ -26,7 +27,8 @@ flowchart LR
     F --> G([GPU Ready])
 ```
 
-**Cloud Journey**
+### Cloud Journey
+
 ```mermaid
 flowchart LR
     A([Start]) --> B{Goal}
@@ -50,6 +52,7 @@ flowchart LR
 **Their question**: "How do I write GPU code for AMD hardware, and how do I port my existing CUDA work?"
 
 **Proposed journey flow:**
+
 ```mermaid
 flowchart TD
     A([C++ / Kernel Dev]) --> B{Starting point?}
@@ -78,6 +81,7 @@ flowchart TD
 **Their question**: "How do I run my PyTorch workloads on AMD, fine-tune models, and serve them?"
 
 **Proposed journey flow:**
+
 ```mermaid
 flowchart TD
     A([AI / ML Developer]) --> B[Get GPU Access\ncloud or bare metal]
@@ -105,6 +109,7 @@ flowchart TD
 **Their question**: "How do I stand up AMD GPU infrastructure that my data science team can actually use?"
 
 **Proposed journey flow:**
+
 ```mermaid
 flowchart TD
     A([IT / DevOps / MLOps]) --> B{Deployment model?}
@@ -144,7 +149,7 @@ Beyond the three personas, a few more gap areas stand out:
 
 Right now the site top-level is: `Bare Metal | Cloud | Ecosystem`. I'd suggest evolving toward something like:
 
-```
+```text
 Start Here (where/how do I access a GPU?)
   ├── Bare Metal
   └── Cloud

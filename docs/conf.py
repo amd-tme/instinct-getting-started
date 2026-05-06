@@ -20,9 +20,14 @@ copyright = "Copyright (c) 2025 Advanced Micro Devices, Inc. All rights reserved
 # Required settings
 html_theme = "rocm_docs_theme"
 html_theme_options = {
-    "flavor": "instinct-design",
+    "flavor": "instinct",
     "link_main_doc": True,
 }
+
+# Instinct Design System flavor CSS/JS — loaded directly until the
+# instinct-design flavor is merged into rocm-docs-core upstream.
+html_css_files = ["instinct-design.css"]
+html_js_files = [("instinct-design.js", {"defer": "defer"})]
 
 # extensions = ["rocm_docs", "sphinx.ext.imgconverter", "rocm_docs.journey_line"]
 extensions = ["rocm_docs", "sphinx.ext.imgconverter"]
